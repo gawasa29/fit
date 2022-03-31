@@ -1,4 +1,9 @@
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:fit/AddPage.dart';
+import 'package:fit/Billing.dart';
+import 'package:fit/Calendar.dart';
+import 'package:fit/Fooddata.dart';
+import 'package:fit/Glaf.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -79,177 +84,10 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              color: const Color(0xffFAFAFA),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.arrow_back_ios_outlined,
-                      color: Colors.black87,
-                    ),
-                  ),
-                  const Text(
-                    '2022年 3月 21日',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      color: Colors.black87,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: const Color(0xffFAFAFA),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              margin: const EdgeInsets.only(top: 10, left: 5, right: 5),
-              padding: const EdgeInsets.only(top: 10, bottom: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(left: 8),
-                        child: const Text(
-                          'カロリー',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                      ),
-                      Container(
-                        height: 180,
-                        width: 180,
-                        child: SfRadialGauge(axes: <RadialAxis>[
-                          RadialAxis(
-                              minimum: 0,
-                              maximum: 100,
-                              showLabels: false,
-                              showTicks: false,
-                              radiusFactor: 0.8,
-                              axisLineStyle: const AxisLineStyle(
-                                thickness: 0.2,
-                                cornerStyle: CornerStyle.bothCurve,
-                                color: Color.fromARGB(30, 0, 169, 181),
-                                thicknessUnit: GaugeSizeUnit.factor,
-                              ),
-                              pointers: <GaugePointer>[
-                                RangePointer(
-                                    value: progressValue,
-                                    cornerStyle: CornerStyle.bothCurve,
-                                    width: 0.2,
-                                    sizeUnit: GaugeSizeUnit.factor,
-                                    enableAnimation: true,
-                                    animationDuration: 100,
-                                    animationType: AnimationType.linear)
-                              ],
-                              annotations: <GaugeAnnotation>[
-                                GaugeAnnotation(
-                                    positionFactor: 0.1,
-                                    angle: 90,
-                                    widget: Text(
-                                      progressValue.toStringAsFixed(0) +
-                                          ' / 1000\n不足1000Kcal',
-                                      style: const TextStyle(fontSize: 10),
-                                      textAlign: TextAlign.center,
-                                    ))
-                              ])
-                        ]),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'PFCバランス',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
-                      ),
-                      Container(
-                        height: 180,
-                        width: 180,
-                        child: SfRadialGauge(axes: <RadialAxis>[
-                          RadialAxis(
-                              minimum: 0,
-                              maximum: 100,
-                              showLabels: false,
-                              showTicks: false,
-                              radiusFactor: 0.8,
-                              // ignore: prefer_const_constructors
-                              axisLineStyle: AxisLineStyle(
-                                thickness: 0.2,
-                                cornerStyle: CornerStyle.bothCurve,
-                                color: const Color.fromARGB(30, 0, 169, 181),
-                                thicknessUnit: GaugeSizeUnit.factor,
-                              ),
-                              pointers: <GaugePointer>[
-                                RangePointer(
-                                  value: progressValue,
-                                  cornerStyle: CornerStyle.bothCurve,
-                                  width: 0.2,
-                                  sizeUnit: GaugeSizeUnit.factor,
-                                )
-                              ],
-                              annotations: <GaugeAnnotation>[
-                                GaugeAnnotation(
-                                    positionFactor: 0.1,
-                                    angle: 90,
-                                    widget: Text(
-                                      progressValue.toStringAsFixed(0) +
-                                          ' / 1000',
-                                      style: const TextStyle(fontSize: 10),
-                                    ))
-                              ])
-                        ]),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(top: 10),
-              padding: const EdgeInsets.all(8.0),
-              width: double.infinity,
-              color: const Color(0xffFAFAFA),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: <Widget>[
-                    const Text(
-                      'バーコードで検索機能を追加！',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-                    ),
-                    Text(
-                      'Fitness GOLDに登録してバーコードで楽々検索しましょう！',
-                      style: TextStyle(color: Colors.grey[700], fontSize: 11),
-                    ),
-                    ElevatedButton(
-                      child: const Text(
-                        'Fitness GOLDに登録',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.orange[300],
-                        onPrimary: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      onPressed: () {},
-                    ),
-                  ]),
-            ),
+            calendar(),
+            glaf(progressValue: progressValue),
+            Billing(),
+            //分けられへんかったからこのまま
             Container(
               margin: const EdgeInsets.only(top: 10, left: 5, right: 5),
               padding: const EdgeInsets.all(8.0),
@@ -258,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 borderRadius: BorderRadius.circular(10),
               ),
               width: double.infinity,
-              height: 300,
+              height: 290,
               // labelColor: Colors.orange[300],
               child: ContainedTabBarView(
                 // ignore: prefer_const_literals_to_create_immutables
@@ -280,260 +118,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: TextStyle(color: Colors.black87),
                   ),
                 ],
-                tabBarProperties: TabBarProperties(
+                tabBarProperties: const TabBarProperties(
                   height: 35.0,
-                  indicatorColor: Colors.orange[300],
+                  indicatorColor: Color.fromRGBO(255, 183, 77, 1),
                   indicatorWeight: 6.0,
                 ),
                 views: [
-                  Container(
-                    child: ListView(
-                      children: <Widget>[
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle:
-                              Text('100g', style: TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle: Text('100g',
-                              style: const TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle:
-                              Text('100g', style: TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle: Text('100g',
-                              style: const TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const Divider(
-                          color: Colors.grey,
-                          thickness: 0.5,
-                        ),
-                        const ListTile(
-                          leading: Text(
-                            '合計',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                          trailing: const Text(
-                            '336kcal',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: ListView(
-                      children: <Widget>[
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle:
-                              Text('100g', style: TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle: Text('100g',
-                              style: const TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle:
-                              Text('100g', style: TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle: Text('100g',
-                              style: const TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const Divider(
-                          color: Colors.grey,
-                          thickness: 0.5,
-                        ),
-                        const ListTile(
-                          leading: Text(
-                            '合計',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                          trailing: const Text(
-                            '336kcal',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: ListView(
-                      children: <Widget>[
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle:
-                              Text('100g', style: TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle: Text('100g',
-                              style: const TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle:
-                              Text('100g', style: TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle: Text('100g',
-                              style: const TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const Divider(
-                          color: Colors.grey,
-                          thickness: 0.5,
-                        ),
-                        const ListTile(
-                          leading: Text(
-                            '合計',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                          trailing: const Text(
-                            '336kcal',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: ListView(
-                      children: <Widget>[
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle:
-                              Text('100g', style: TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle: Text('100g',
-                              style: const TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle:
-                              Text('100g', style: TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const ListTile(
-                          title: Text(
-                            '白米',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle: Text('100g',
-                              style: const TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                        const Divider(
-                          color: Colors.grey,
-                          thickness: 0.5,
-                        ),
-                        const ListTile(
-                          leading: Text(
-                            '合計',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                          trailing: const Text(
-                            '336kcal',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                  tabmenu(),
+                  tabmenu(),
+                  tabmenu(),
+                  tabmenu(),
                 ],
                 onChange: (index) => print(index),
               ),
@@ -546,8 +140,93 @@ class _MyHomePageState extends State<MyHomePage> {
           Icons.add,
           size: 30,
         ),
-        backgroundColor: Colors.orange[300],
-        onPressed: () {},
+        backgroundColor: Colors.orange[400],
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AddPage()));
+        },
+      ),
+    );
+  }
+
+  Container tabmenu() {
+    return Container(
+      child: Container(
+        child: Column(
+          children: [
+            Flexible(
+              child: ListView(
+                // ignore: prefer_const_literals_to_create_immutables
+                children: [
+                  const ListTile(
+                    leading: Text(
+                      '合計',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                    trailing: Text(
+                      '1036kcal',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                  ),
+                  const Divider(
+                    color: Colors.grey,
+                    thickness: 0.5,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => FoodData()));
+                    },
+                    child: const ListTile(
+                      title: Text(
+                        '白米',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15),
+                      ),
+                      subtitle:
+                          Text('100g', style: const TextStyle(fontSize: 13)),
+                      trailing: Text('336kcal'),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => FoodData()));
+                    },
+                    child: const ListTile(
+                      title: Text(
+                        '白米',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15),
+                      ),
+                      subtitle:
+                          Text('100g', style: const TextStyle(fontSize: 13)),
+                      trailing: Text('336kcal'),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => FoodData()));
+                    },
+                    child: const ListTile(
+                      title: Text(
+                        '白米',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15),
+                      ),
+                      subtitle:
+                          Text('100g', style: const TextStyle(fontSize: 13)),
+                      trailing: Text('336kcal'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
