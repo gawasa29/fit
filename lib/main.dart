@@ -1,5 +1,5 @@
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
-import 'package:fit/AddPage.dart';
+import 'package:fit/add_page/AddPage.dart';
 import 'package:fit/Billing.dart';
 import 'package:fit/Calendar.dart';
 import 'package:fit/Fooddata.dart';
@@ -182,11 +182,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: const ListTile(
                       title: Text(
                         '白米',
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15),
                       ),
-                      subtitle:
-                          Text('100g', style: const TextStyle(fontSize: 13)),
+                      subtitle: Text('100g', style: TextStyle(fontSize: 13)),
                       trailing: Text('336kcal'),
                     ),
                   ),
@@ -201,8 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15),
                       ),
-                      subtitle:
-                          Text('100g', style: const TextStyle(fontSize: 13)),
+                      subtitle: Text('100g', style: TextStyle(fontSize: 13)),
                       trailing: Text('336kcal'),
                     ),
                   ),
@@ -214,11 +212,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: const ListTile(
                       title: Text(
                         '白米',
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15),
                       ),
-                      subtitle:
-                          Text('100g', style: const TextStyle(fontSize: 13)),
+                      subtitle: Text('100g', style: TextStyle(fontSize: 13)),
                       trailing: Text('336kcal'),
                     ),
                   ),

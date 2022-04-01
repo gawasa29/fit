@@ -1,13 +1,14 @@
+import 'package:fit/main.dart';
 import 'package:flutter/material.dart';
 
-class FoodData extends StatefulWidget {
-  const FoodData({Key? key}) : super(key: key);
+class AddFoodData extends StatefulWidget {
+  const AddFoodData({Key? key}) : super(key: key);
 
   @override
-  State<FoodData> createState() => _FoodDataState();
+  State<AddFoodData> createState() => _AddFoodDataState();
 }
 
-class _FoodDataState extends State<FoodData> {
+class _AddFoodDataState extends State<AddFoodData> {
   bool isVisible = false;
 
   @override
@@ -24,6 +25,18 @@ class _FoodDataState extends State<FoodData> {
                 fontWeight: FontWeight.bold,
                 fontSize: 18),
           ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyHomePage()));
+              },
+              icon: const Icon(
+                Icons.done,
+                color: Colors.black87,
+              ),
+            ),
+          ],
           iconTheme: const IconThemeData(color: Colors.black87),
         ),
         body: SingleChildScrollView(
@@ -205,6 +218,38 @@ class _FoodDataState extends State<FoodData> {
                     ],
                   ),
                 ]),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.only(right: 40.0, left: 40.0, top: 40),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(minWidth: double.infinity),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.orange[400],
+                      padding: EdgeInsets.only(top: 7, bottom: 7),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: BorderSide(
+                            color: Color.fromRGBO(255, 167, 38, 1),
+                          )),
+                    ),
+                    child: Text(
+                      '登録する',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xffFAFAFA),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MyHomePage()));
+                    },
+                  ),
+                ),
               ),
             ],
           ),
