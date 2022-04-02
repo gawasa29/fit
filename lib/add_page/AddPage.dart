@@ -1,6 +1,8 @@
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 
 import 'package:fit/add_page/AddFoodData.dart';
+import 'package:fit/add_page/MyFood.dart';
+import 'package:fit/add_page/SerchFoodData.dart';
 import 'package:flutter/material.dart';
 
 class AddPage extends StatefulWidget {
@@ -78,7 +80,12 @@ class _AddPageState extends State<AddPage> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MyFood()));
+                            },
                           ),
                         ),
                         SizedBox(
@@ -89,7 +96,7 @@ class _AddPageState extends State<AddPage> {
                                   height: 60,
                                   width: 88,
                                 ),
-                                Text('MYフード')
+                                Text('MYレシピ')
                               ],
                             ),
                             style: ElevatedButton.styleFrom(
@@ -111,7 +118,7 @@ class _AddPageState extends State<AddPage> {
                                   height: 60,
                                   width: 88,
                                 ),
-                                Text('MYフード')
+                                Text('バーコード')
                               ],
                             ),
                             style: ElevatedButton.styleFrom(
@@ -193,116 +200,111 @@ class _AddPageState extends State<AddPage> {
 
   Container tabmenu() {
     return Container(
-      child: Container(
-        child: Column(
-          children: [
-            Flexible(
-              child: ListView(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddFoodData()));
-                    },
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: ListTile(
-                            title: Text(
-                              '白米',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
-                            ),
-                            subtitle:
-                                Text('100g', style: TextStyle(fontSize: 13)),
-                            trailing: Text('336kcal'),
+      child: Column(
+        children: [
+          Flexible(
+            child: ListView(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => AddFoodData()));
+                  },
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: ListTile(
+                          title: Text(
+                            '白米',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
                           ),
+                          subtitle:
+                              Text('100g', style: TextStyle(fontSize: 13)),
+                          trailing: Text('336kcal'),
                         ),
-                        IconButton(
-                          iconSize: 30,
-                          onPressed: () {
-                            print(1);
-                          },
-                          icon: Icon(
-                            Icons.control_point_outlined,
-                            color: Colors.black54,
-                          ),
+                      ),
+                      IconButton(
+                        iconSize: 30,
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SerchFoodData()));
+                        },
+                        icon: Icon(
+                          Icons.control_point_outlined,
+                          color: Colors.black54,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddFoodData()));
-                    },
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: ListTile(
-                            title: Text(
-                              '白米',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
-                            ),
-                            subtitle:
-                                Text('100g', style: TextStyle(fontSize: 13)),
-                            trailing: Text('336kcal'),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => AddFoodData()));
+                  },
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: ListTile(
+                          title: Text(
+                            '白米',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
                           ),
+                          subtitle:
+                              Text('100g', style: TextStyle(fontSize: 13)),
+                          trailing: Text('336kcal'),
                         ),
-                        IconButton(
-                          iconSize: 30,
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.control_point_outlined,
-                            color: Colors.black54,
-                          ),
+                      ),
+                      IconButton(
+                        iconSize: 30,
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.control_point_outlined,
+                          color: Colors.black54,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddFoodData()));
-                    },
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: ListTile(
-                            title: Text(
-                              '白米',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
-                            ),
-                            subtitle:
-                                Text('100g', style: TextStyle(fontSize: 13)),
-                            trailing: Text('336kcal'),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => AddFoodData()));
+                  },
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: ListTile(
+                          title: Text(
+                            '白米',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
                           ),
+                          subtitle:
+                              Text('100g', style: TextStyle(fontSize: 13)),
+                          trailing: Text('336kcal'),
                         ),
-                        IconButton(
-                          iconSize: 30,
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.control_point_outlined,
-                            color: Colors.black54,
-                          ),
+                      ),
+                      IconButton(
+                        iconSize: 30,
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.control_point_outlined,
+                          color: Colors.black54,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
