@@ -9,6 +9,8 @@ class AddFoodData extends StatefulWidget {
 }
 
 class _AddFoodDataState extends State<AddFoodData> {
+  List<bool> isSelected1 = [false];
+  List<bool> isSelected2 = [false];
   bool isVisible = false;
 
   @override
@@ -219,6 +221,28 @@ class _AddFoodDataState extends State<AddFoodData> {
                   ),
                 ]),
               ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  margin: const EdgeInsets.only(
+                    top: 10,
+                    bottom: 10,
+                    right: 5,
+                    left: 20,
+                  ),
+                  child: const Text(
+                    '分量の変更',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                padding: const EdgeInsets.only(
+                  top: 5,
+                ),
+                child: intmenu(),
+              ),
               Padding(
                 padding:
                     const EdgeInsets.only(right: 40.0, left: 40.0, top: 40),
@@ -331,6 +355,133 @@ class _AddFoodDataState extends State<AddFoodData> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget intmenu() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Container(
+          padding:
+              EdgeInsets.only(top: 4.0, left: 0.0, right: 0.0, bottom: 6.0),
+          child: Container(
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 4.0,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 10.0, right: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        InkWell(
+                          splashColor: Colors.blue[100],
+                          onTap: () {},
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 25.0),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black87),
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(48.0)),
+                            ),
+                            child: Text(
+                              '50%',
+                              style: TextStyle(
+                                  color: Colors.grey[900],
+                                  fontSize: 10.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 2.0,
+                        ),
+                        InkWell(
+                          splashColor: Colors.blue[100],
+                          onTap: () {},
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 25.0),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black87),
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(48.0)),
+                            ),
+                            child: Text(
+                              '100%',
+                              style: TextStyle(
+                                  color: Colors.grey[900],
+                                  fontSize: 10.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 2.0,
+                        ),
+                        InkWell(
+                          splashColor: Colors.blue[100],
+                          onTap: () {},
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 25.0),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black87),
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(48.0)),
+                            ),
+                            child: Text(
+                              '200%',
+                              style: TextStyle(
+                                  color: Colors.grey[900],
+                                  fontSize: 10.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 2.0,
+                        ),
+                        InkWell(
+                          splashColor: Colors.blue[100],
+                          onTap: () {},
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 25.0),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black87),
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(48.0)),
+                            ),
+                            child: Text(
+                              'カスタム',
+                              style: TextStyle(
+                                  color: Colors.grey[900],
+                                  fontSize: 10.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 6.0,
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 

@@ -9,6 +9,7 @@ class MyFood extends StatefulWidget {
 }
 
 class _MyFoodState extends State<MyFood> {
+  bool isVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,6 +71,7 @@ class _MyFoodState extends State<MyFood> {
                               width: 177,
                               height: 20,
                               child: TextField(
+                                textInputAction: TextInputAction.next,
                                 decoration: InputDecoration(
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
@@ -103,6 +105,7 @@ class _MyFoodState extends State<MyFood> {
                                 width: 150,
                                 height: 20,
                                 child: TextField(
+                                  textInputAction: TextInputAction.next,
                                   decoration: InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
@@ -141,6 +144,7 @@ class _MyFoodState extends State<MyFood> {
                                   width: 150,
                                   height: 20,
                                   child: TextField(
+                                    textInputAction: TextInputAction.next,
                                     decoration: InputDecoration(
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
@@ -180,6 +184,7 @@ class _MyFoodState extends State<MyFood> {
                                   width: 150,
                                   height: 20,
                                   child: TextField(
+                                    textInputAction: TextInputAction.next,
                                     decoration: InputDecoration(
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
@@ -219,6 +224,7 @@ class _MyFoodState extends State<MyFood> {
                                   width: 150,
                                   height: 20,
                                   child: TextField(
+                                    textInputAction: TextInputAction.next,
                                     decoration: InputDecoration(
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
@@ -255,6 +261,7 @@ class _MyFoodState extends State<MyFood> {
                                         width: 150,
                                         height: 20,
                                         child: TextField(
+                                          textInputAction: TextInputAction.next,
                                           decoration: InputDecoration(
                                             focusedBorder: UnderlineInputBorder(
                                               borderSide: BorderSide(
@@ -285,6 +292,7 @@ class _MyFoodState extends State<MyFood> {
                                         width: 150,
                                         height: 20,
                                         child: TextField(
+                                          textInputAction: TextInputAction.next,
                                           decoration: InputDecoration(
                                             focusedBorder: UnderlineInputBorder(
                                               borderSide: BorderSide(
@@ -313,6 +321,20 @@ class _MyFoodState extends State<MyFood> {
                       right: 10,
                     ),
                     child: underlist(),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.expand_more_outlined,
+                          color: Colors.orange[400],
+                        ),
+                        onPressed: () {
+                          setState(toggleShowText);
+                        },
+                      )
+                    ],
                   ),
                 ],
               ),
@@ -354,245 +376,267 @@ class _MyFoodState extends State<MyFood> {
     return Container(
       child: Column(
         children: [
-          Container(
-            padding: const EdgeInsets.only(
-              top: 10,
-              bottom: 10,
-            ),
-            child: Column(
-              children: [
-                Container(
-                  padding: const EdgeInsets.only(
-                    top: 5,
-                    bottom: 10,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('脂肪'),
-                      Container(
-                        margin: const EdgeInsets.only(right: 20),
-                        child: Row(
-                          children: const [
-                            SizedBox(
-                              width: 80,
-                              height: 20,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color.fromRGBO(255, 167, 38, 1)),
+          Visibility(
+            visible: isVisible,
+            child: Container(
+              padding: const EdgeInsets.only(
+                top: 10,
+                bottom: 10,
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 5,
+                      bottom: 10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('脂肪'),
+                        Container(
+                          margin: const EdgeInsets.only(right: 20),
+                          child: Row(
+                            children: const [
+                              SizedBox(
+                                width: 80,
+                                height: 20,
+                                child: TextField(
+                                  textInputAction: TextInputAction.next,
+                                  decoration: InputDecoration(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color:
+                                              Color.fromRGBO(255, 167, 38, 1)),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              'g',
-                            ),
-                          ],
+                              Text(
+                                'g',
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Text('脂肪'),
-                      Container(
-                        margin: const EdgeInsets.only(right: 20),
-                        child: Row(
-                          children: const [
-                            SizedBox(
-                              width: 80,
-                              height: 20,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color.fromRGBO(255, 167, 38, 1)),
+                        Text('脂肪'),
+                        Container(
+                          margin: const EdgeInsets.only(right: 20),
+                          child: Row(
+                            children: const [
+                              SizedBox(
+                                width: 80,
+                                height: 20,
+                                child: TextField(
+                                  textInputAction: TextInputAction.next,
+                                  decoration: InputDecoration(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color:
+                                              Color.fromRGBO(255, 167, 38, 1)),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              'g',
-                            ),
-                          ],
+                              Text(
+                                'g',
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(
-                    top: 5,
-                    bottom: 10,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('脂肪'),
-                      Container(
-                        margin: const EdgeInsets.only(right: 20),
-                        child: Row(
-                          children: const [
-                            SizedBox(
-                              width: 80,
-                              height: 20,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color.fromRGBO(255, 167, 38, 1)),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 5,
+                      bottom: 10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('脂肪'),
+                        Container(
+                          margin: const EdgeInsets.only(right: 20),
+                          child: Row(
+                            children: const [
+                              SizedBox(
+                                width: 80,
+                                height: 20,
+                                child: TextField(
+                                  textInputAction: TextInputAction.next,
+                                  decoration: InputDecoration(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color:
+                                              Color.fromRGBO(255, 167, 38, 1)),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              'g',
-                            ),
-                          ],
+                              Text(
+                                'g',
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Text('脂肪'),
-                      Container(
-                        margin: const EdgeInsets.only(right: 20),
-                        child: Row(
-                          children: const [
-                            SizedBox(
-                              width: 80,
-                              height: 20,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color.fromRGBO(255, 167, 38, 1)),
+                        Text('脂肪'),
+                        Container(
+                          margin: const EdgeInsets.only(right: 20),
+                          child: Row(
+                            children: const [
+                              SizedBox(
+                                width: 80,
+                                height: 20,
+                                child: TextField(
+                                  textInputAction: TextInputAction.next,
+                                  decoration: InputDecoration(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color:
+                                              Color.fromRGBO(255, 167, 38, 1)),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              'g',
-                            ),
-                          ],
+                              Text(
+                                'g',
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(
-                    top: 5,
-                    bottom: 10,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('脂肪'),
-                      Container(
-                        margin: const EdgeInsets.only(right: 20),
-                        child: Row(
-                          children: const [
-                            SizedBox(
-                              width: 80,
-                              height: 20,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color.fromRGBO(255, 167, 38, 1)),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 5,
+                      bottom: 10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('脂肪'),
+                        Container(
+                          margin: const EdgeInsets.only(right: 20),
+                          child: Row(
+                            children: const [
+                              SizedBox(
+                                width: 80,
+                                height: 20,
+                                child: TextField(
+                                  textInputAction: TextInputAction.next,
+                                  decoration: InputDecoration(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color:
+                                              Color.fromRGBO(255, 167, 38, 1)),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              'g',
-                            ),
-                          ],
+                              Text(
+                                'g',
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Text('脂肪'),
-                      Container(
-                        margin: const EdgeInsets.only(right: 20),
-                        child: Row(
-                          children: const [
-                            SizedBox(
-                              width: 80,
-                              height: 20,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color.fromRGBO(255, 167, 38, 1)),
+                        Text('脂肪'),
+                        Container(
+                          margin: const EdgeInsets.only(right: 20),
+                          child: Row(
+                            children: const [
+                              SizedBox(
+                                width: 80,
+                                height: 20,
+                                child: TextField(
+                                  textInputAction: TextInputAction.next,
+                                  decoration: InputDecoration(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color:
+                                              Color.fromRGBO(255, 167, 38, 1)),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              'g',
-                            ),
-                          ],
+                              Text(
+                                'g',
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(
-                    top: 5,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('脂肪'),
-                      Container(
-                        margin: const EdgeInsets.only(right: 20),
-                        child: Row(
-                          children: const [
-                            SizedBox(
-                              width: 80,
-                              height: 20,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color.fromRGBO(255, 167, 38, 1)),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 5,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('脂肪'),
+                        Container(
+                          margin: const EdgeInsets.only(right: 20),
+                          child: Row(
+                            children: const [
+                              SizedBox(
+                                width: 80,
+                                height: 20,
+                                child: TextField(
+                                  textInputAction: TextInputAction.next,
+                                  decoration: InputDecoration(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color:
+                                              Color.fromRGBO(255, 167, 38, 1)),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              'g',
-                            ),
-                          ],
+                              Text(
+                                'g',
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Text('脂肪'),
-                      Container(
-                        margin: const EdgeInsets.only(right: 20),
-                        child: Row(
-                          children: const [
-                            SizedBox(
-                              width: 80,
-                              height: 20,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color.fromRGBO(255, 167, 38, 1)),
+                        Text('脂肪'),
+                        Container(
+                          margin: const EdgeInsets.only(right: 20),
+                          child: Row(
+                            children: const [
+                              SizedBox(
+                                width: 80,
+                                height: 20,
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color:
+                                              Color.fromRGBO(255, 167, 38, 1)),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              'g',
-                            ),
-                          ],
+                              Text(
+                                'g',
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
       ),
     );
+  }
+
+  void toggleShowText() {
+    isVisible = !isVisible;
   }
 }

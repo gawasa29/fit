@@ -3,6 +3,7 @@ import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:fit/add_page/AddFoodData.dart';
 import 'package:fit/add_page/MyFood.dart';
 import 'package:fit/add_page/SerchFoodData.dart';
+import 'package:fit/home.dart';
 import 'package:flutter/material.dart';
 
 class AddPage extends StatefulWidget {
@@ -242,10 +243,7 @@ class _AddPageState extends State<AddPage> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AddFoodData()));
-                  },
+                  onTap: () {},
                   child: Row(
                     children: [
                       Expanded(
@@ -292,7 +290,12 @@ class _AddPageState extends State<AddPage> {
                       ),
                       IconButton(
                         iconSize: 30,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => exsample()));
+                        },
                         icon: Icon(
                           Icons.control_point_outlined,
                           color: Colors.black54,

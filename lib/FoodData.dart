@@ -1,3 +1,4 @@
+import 'package:fit/add_page/MyFood.dart';
 import 'package:flutter/material.dart';
 
 class FoodData extends StatefulWidget {
@@ -24,6 +25,18 @@ class _FoodDataState extends State<FoodData> {
                 fontWeight: FontWeight.bold,
                 fontSize: 18),
           ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => MyFood()));
+              },
+              icon: const Icon(
+                Icons.edit_outlined,
+                color: Colors.black87,
+              ),
+            ),
+          ],
           iconTheme: const IconThemeData(color: Colors.black87),
         ),
         body: SingleChildScrollView(

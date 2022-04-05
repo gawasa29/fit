@@ -3,7 +3,7 @@ import 'package:fit/add_page/AddPage.dart';
 import 'package:fit/Billing.dart';
 import 'package:fit/Calendar.dart';
 import 'package:fit/Fooddata.dart';
-import 'package:fit/Glaf.dart';
+import 'package:fit/glaf_page/Glaf.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
