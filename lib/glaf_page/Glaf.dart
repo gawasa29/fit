@@ -1,14 +1,22 @@
+import 'dart:math';
+
+import 'package:fit/glaf_page/AllGlaf.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
-class glaf extends StatelessWidget {
-  const glaf({
-    Key? key,
-    required this.progressValue,
-  }) : super(key: key);
-
+class glaf extends StatefulWidget {
+  const glaf({Key? key, required this.progressValue}) : super(key: key);
   final double progressValue;
 
+  @override
+  State<glaf> createState() => _glafState();
+}
+
+class _glafState extends State<glaf> {
+  int touchedIndex = -1;
+
+  bool isPlaying = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,7 +48,7 @@ class glaf extends StatelessWidget {
                     child: SfRadialGauge(axes: <RadialAxis>[
                       RadialAxis(
                           minimum: 0,
-                          maximum: 100,
+                          maximum: 1000,
                           showLabels: false,
                           showTicks: false,
                           radiusFactor: 0.8,
@@ -52,7 +60,7 @@ class glaf extends StatelessWidget {
                           ),
                           pointers: const <GaugePointer>[
                             RangePointer(
-                                value: 75,
+                                value: 450,
                                 cornerStyle: CornerStyle.bothCurve,
                                 enableAnimation: true,
                                 animationDuration: 1200,
@@ -70,14 +78,25 @@ class glaf extends StatelessWidget {
                           ],
                           annotations: <GaugeAnnotation>[
                             GaugeAnnotation(
-                                positionFactor: 0.1,
-                                angle: 90,
-                                widget: Text(
-                                  progressValue.toStringAsFixed(0) +
-                                      ' / 1000\n不足1000Kcal',
-                                  style: const TextStyle(fontSize: 10),
-                                  textAlign: TextAlign.center,
-                                ))
+                              positionFactor: 0.1,
+                              angle: 90,
+                              widget: Text.rich(
+                                TextSpan(
+                                  children: [
+                                    TextSpan(
+                                        text: "100",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17)),
+                                    TextSpan(
+                                        text: ' / 1000\n不足500Kcal',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12)),
+                                  ],
+                                ),
+                              ),
+                            )
                           ])
                     ]),
                   ),
@@ -91,40 +110,257 @@ class glaf extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   Container(
-                    height: 180,
-                    width: 180,
-                    child: SfRadialGauge(axes: <RadialAxis>[
-                      RadialAxis(
-                          minimum: 0,
-                          maximum: 100,
-                          showLabels: false,
-                          showTicks: false,
-                          radiusFactor: 0.8,
-                          // ignore: prefer_const_constructors
-                          axisLineStyle: AxisLineStyle(
-                            thickness: 0.2,
-                            cornerStyle: CornerStyle.bothCurve,
-                            color: const Color.fromARGB(30, 0, 169, 181),
-                            thicknessUnit: GaugeSizeUnit.factor,
+                    padding: const EdgeInsets.only(top: 9, bottom: 2),
+                    width: 175,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'タンパク質',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                        Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                  text: "100",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15)),
+                              TextSpan(
+                                  text: ' / 1000',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12)),
+                            ],
                           ),
-                          pointers: <GaugePointer>[
-                            RangePointer(
-                              value: progressValue,
-                              cornerStyle: CornerStyle.bothCurve,
-                              width: 0.2,
-                              sizeUnit: GaugeSizeUnit.factor,
-                            )
-                          ],
-                          annotations: <GaugeAnnotation>[
-                            GaugeAnnotation(
-                                positionFactor: 0.1,
-                                angle: 90,
-                                widget: Text(
-                                  progressValue.toStringAsFixed(1) + ' / 1000',
-                                  style: const TextStyle(fontSize: 10),
-                                ))
-                          ])
-                    ]),
+                        ),
+                      ],
+                    ),
+                  ),
+                  RotatedBox(
+                    quarterTurns: 1,
+                    child: Container(
+                      width: 10,
+                      height: 180,
+                      child: AspectRatio(
+                        aspectRatio: 1,
+                        child: Card(
+                          elevation: 0,
+                          color: const Color(0xffFAFAFA),
+                          child: Stack(
+                            children: <Widget>[
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Expanded(
+                                    child: BarChart(
+                                      mainBarData(),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 2,
+                    ),
+                    width: 175,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                  text: "不足", style: TextStyle(fontSize: 12)),
+                              TextSpan(
+                                  text: ' 500',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15)),
+                              TextSpan(
+                                  text: 'g', style: TextStyle(fontSize: 12)),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: 175,
+                    padding: const EdgeInsets.only(top: 10, bottom: 2),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '脂質',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                        Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                  text: "100",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15)),
+                              TextSpan(
+                                  text: ' / 1000',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12)),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  RotatedBox(
+                    quarterTurns: 1,
+                    child: Container(
+                      width: 10,
+                      height: 180,
+                      child: AspectRatio(
+                        aspectRatio: 1,
+                        child: Card(
+                          elevation: 0,
+                          color: const Color(0xffFAFAFA),
+                          child: Stack(
+                            children: <Widget>[
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Expanded(
+                                    child: BarChart(fatmainBarData()),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 2,
+                    ),
+                    width: 175,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                  text: "不足", style: TextStyle(fontSize: 12)),
+                              TextSpan(
+                                  text: ' 500',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15)),
+                              TextSpan(
+                                  text: 'g', style: TextStyle(fontSize: 12)),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: 175,
+                    padding: const EdgeInsets.only(top: 10, bottom: 2),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '炭水化物',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                        Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                  text: "100",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15)),
+                              TextSpan(
+                                  text: ' / 1000',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12)),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  RotatedBox(
+                    quarterTurns: 1,
+                    child: Container(
+                      width: 10,
+                      height: 180,
+                      child: AspectRatio(
+                        aspectRatio: 1,
+                        child: Card(
+                          elevation: 0,
+                          color: const Color(0xffFAFAFA),
+                          child: Stack(
+                            children: <Widget>[
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Expanded(
+                                    child: BarChart(
+                                      carbohydratemainBarData(),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 2,
+                    ),
+                    width: 175,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                  text: "不足", style: TextStyle(fontSize: 12)),
+                              TextSpan(
+                                  text: ' 500',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15)),
+                              TextSpan(
+                                  text: 'g', style: TextStyle(fontSize: 12)),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -134,11 +370,226 @@ class glaf extends StatelessWidget {
             height: 33,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [TextButton(onPressed: () {}, child: Text('さらに表示 ＞'))],
+              children: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AllGlaf(
+                                    progressValue: 1,
+                                  )));
+                    },
+                    child: Text('さらに表示 >'))
+              ],
             ),
           ),
         ],
       ),
+    );
+  }
+
+  final _barsGradient = const LinearGradient(
+    colors: [
+      Color.fromRGBO(253, 216, 53, 1),
+      Color.fromRGBO(255, 167, 38, 1),
+    ],
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+  );
+  BarChartGroupData makeGroupData(
+    int x,
+    double y, {
+    bool isTouched = false,
+    double width = 12,
+    List<int> showTooltips = const [],
+  }) {
+    return BarChartGroupData(
+      x: x,
+      barRods: [
+        BarChartRodData(
+          toY: y,
+          gradient: _barsGradient,
+          width: width,
+          backDrawRodData: BackgroundBarChartRodData(
+            show: true,
+            toY: 109,
+            color: Colors.grey[300],
+          ),
+        ),
+      ],
+      showingTooltipIndicators: showTooltips,
+    );
+  }
+
+//タンパク質
+  List<BarChartGroupData> showingGroups() => List.generate(1, (i) {
+        switch (i) {
+          case 0:
+            return makeGroupData(0, 65, isTouched: i == touchedIndex);
+          default:
+            return throw Error();
+        }
+      });
+
+  BarChartData mainBarData() {
+    return BarChartData(
+      titlesData: FlTitlesData(
+        show: true,
+        rightTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        topTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        bottomTitles: AxisTitles(
+          sideTitles: SideTitles(
+            showTitles: false,
+            reservedSize: 38,
+          ),
+        ),
+        leftTitles: AxisTitles(
+          sideTitles: SideTitles(
+            showTitles: false,
+          ),
+        ),
+      ),
+      borderData: FlBorderData(
+        show: false,
+      ),
+      barGroups: showingGroups(),
+      gridData: FlGridData(show: false),
+    );
+  }
+
+//脂質
+  BarChartGroupData fatmakeGroupData(
+    int x,
+    double y, {
+    bool isTouched = false,
+    double width = 12,
+    List<int> showTooltips = const [],
+  }) {
+    return BarChartGroupData(
+      x: x,
+      barRods: [
+        BarChartRodData(
+          toY: y,
+          gradient: _barsGradient,
+          width: width,
+          backDrawRodData: BackgroundBarChartRodData(
+            show: true,
+            toY: 81,
+            color: Colors.grey[300],
+          ),
+        ),
+      ],
+      showingTooltipIndicators: showTooltips,
+    );
+  }
+
+  List<BarChartGroupData> fatshowingGroups() => List.generate(1, (i) {
+        switch (i) {
+          case 0:
+            return fatmakeGroupData(0, 56, isTouched: i == touchedIndex);
+          default:
+            return throw Error();
+        }
+      });
+
+  BarChartData fatmainBarData() {
+    return BarChartData(
+      titlesData: FlTitlesData(
+        show: true,
+        rightTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        topTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        bottomTitles: AxisTitles(
+          sideTitles: SideTitles(
+            showTitles: false,
+            reservedSize: 38,
+          ),
+        ),
+        leftTitles: AxisTitles(
+          sideTitles: SideTitles(
+            showTitles: false,
+          ),
+        ),
+      ),
+      borderData: FlBorderData(
+        show: false,
+      ),
+      barGroups: fatshowingGroups(),
+      gridData: FlGridData(show: false),
+    );
+  }
+
+  //炭水化物
+  BarChartGroupData carbohydratemakeGroupData(
+    int x,
+    double y, {
+    bool isTouched = false,
+    double width = 12,
+    List<int> showTooltips = const [],
+  }) {
+    return BarChartGroupData(
+      x: x,
+      barRods: [
+        BarChartRodData(
+          toY: y,
+          gradient: _barsGradient,
+          width: width,
+          backDrawRodData: BackgroundBarChartRodData(
+            show: true,
+            toY: 435,
+            color: Colors.grey[300],
+          ),
+        ),
+      ],
+      showingTooltipIndicators: showTooltips,
+    );
+  }
+
+  List<BarChartGroupData> carbohydrateshowingGroups() => List.generate(1, (i) {
+        switch (i) {
+          case 0:
+            return carbohydratemakeGroupData(0, 356,
+                isTouched: i == touchedIndex);
+          default:
+            return throw Error();
+        }
+      });
+
+  BarChartData carbohydratemainBarData() {
+    return BarChartData(
+      titlesData: FlTitlesData(
+        show: true,
+        rightTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        topTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        bottomTitles: AxisTitles(
+          sideTitles: SideTitles(
+            showTitles: false,
+            reservedSize: 38,
+          ),
+        ),
+        leftTitles: AxisTitles(
+          sideTitles: SideTitles(
+            showTitles: false,
+          ),
+        ),
+      ),
+      borderData: FlBorderData(
+        show: false,
+      ),
+      barGroups: carbohydrateshowingGroups(),
+      gridData: FlGridData(show: false),
     );
   }
 }

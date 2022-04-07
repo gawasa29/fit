@@ -58,7 +58,8 @@ class _AddPageState extends State<AddPage> {
             Container(
                 color: Colors.orange[100],
                 child: Container(
-                    margin: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.only(
+                        top: 15, bottom: 15, left: 10, right: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -290,12 +291,7 @@ class _AddPageState extends State<AddPage> {
                       ),
                       IconButton(
                         iconSize: 30,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => exsample()));
-                        },
+                        onPressed: () {},
                         icon: Icon(
                           Icons.control_point_outlined,
                           color: Colors.black54,
