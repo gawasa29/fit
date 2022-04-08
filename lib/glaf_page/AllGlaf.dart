@@ -1,6 +1,17 @@
 import 'dart:math';
 
 import 'package:fit/Billing.dart';
+import 'package:fit/glaf_page/Calcium.dart';
+import 'package:fit/glaf_page/Cholesterol.dart';
+import 'package:fit/glaf_page/DietaryFiber.dart';
+
+import 'package:fit/glaf_page/GlafData.dart';
+import 'package:fit/glaf_page/Iron.dart';
+import 'package:fit/glaf_page/Potassium.dart';
+import 'package:fit/glaf_page/Sodium.dart';
+import 'package:fit/glaf_page/SugarBar.dart';
+import 'package:fit/glaf_page/VitaminA.dart';
+import 'package:fit/glaf_page/VitaminB.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -16,7 +27,6 @@ class AllGlaf extends StatefulWidget {
 class _AllGlafState extends State<AllGlaf> {
   int touchedIndex = -1;
 
-  bool isPlaying = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,12 +147,12 @@ class _AllGlafState extends State<AllGlaf> {
                               TextSpan(
                                 children: [
                                   TextSpan(
-                                      text: "100",
+                                      text: "65",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15)),
                                   TextSpan(
-                                      text: ' / 1000',
+                                      text: ' / 109',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 12)),
@@ -198,7 +208,7 @@ class _AllGlafState extends State<AllGlaf> {
                                       text: "不足",
                                       style: TextStyle(fontSize: 12)),
                                   TextSpan(
-                                      text: ' 500',
+                                      text: ' 35',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15)),
@@ -225,12 +235,12 @@ class _AllGlafState extends State<AllGlaf> {
                               TextSpan(
                                 children: [
                                   TextSpan(
-                                      text: "100",
+                                      text: "56",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15)),
                                   TextSpan(
-                                      text: ' / 1000',
+                                      text: ' / 81',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 12)),
@@ -284,7 +294,7 @@ class _AllGlafState extends State<AllGlaf> {
                                       text: "不足",
                                       style: TextStyle(fontSize: 12)),
                                   TextSpan(
-                                      text: ' 500',
+                                      text: ' 25',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15)),
@@ -311,12 +321,12 @@ class _AllGlafState extends State<AllGlaf> {
                               TextSpan(
                                 children: [
                                   TextSpan(
-                                      text: "100",
+                                      text: "356",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15)),
                                   TextSpan(
-                                      text: ' / 1000',
+                                      text: ' / 435',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 12)),
@@ -372,7 +382,7 @@ class _AllGlafState extends State<AllGlaf> {
                                       text: "不足",
                                       style: TextStyle(fontSize: 12)),
                                   TextSpan(
-                                      text: ' 500',
+                                      text: ' 129',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15)),
@@ -390,214 +400,45 @@ class _AllGlafState extends State<AllGlaf> {
                 ],
               ),
             ),
-            Billing()
+            Billing(),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                margin: const EdgeInsets.only(
+                  top: 10,
+                  bottom: 10,
+                  right: 5,
+                  left: 10,
+                ),
+                child: const Text(
+                  '栄養素',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: const Color(0xffFAFAFA),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: const EdgeInsets.only(left: 5, right: 5, bottom: 30),
+              padding: const EdgeInsets.only(
+                  top: 10, bottom: 15, left: 22, right: 13),
+              child: Column(children: [
+                Sugar(),
+                DietaryFiber(),
+                Calcium(),
+                VitaminA(),
+                VitaminB(),
+                Iron(),
+                Cholesterol(),
+                Sodium(),
+                Potassium(),
+              ]),
+            )
           ],
         ),
       ),
-    );
-  }
-
-  final _barsGradient = const LinearGradient(
-    colors: [
-      Color.fromRGBO(253, 216, 53, 1),
-      Color.fromRGBO(255, 167, 38, 1),
-    ],
-    begin: Alignment.bottomCenter,
-    end: Alignment.topCenter,
-  );
-  BarChartGroupData makeGroupData(
-    int x,
-    double y, {
-    bool isTouched = false,
-    double width = 12,
-    List<int> showTooltips = const [],
-  }) {
-    return BarChartGroupData(
-      x: x,
-      barRods: [
-        BarChartRodData(
-          toY: y,
-          gradient: _barsGradient,
-          width: width,
-          backDrawRodData: BackgroundBarChartRodData(
-            show: true,
-            toY: 109,
-            color: Colors.grey[300],
-          ),
-        ),
-      ],
-      showingTooltipIndicators: showTooltips,
-    );
-  }
-
-//タンパク質
-  List<BarChartGroupData> showingGroups() => List.generate(1, (i) {
-        switch (i) {
-          case 0:
-            return makeGroupData(0, 65, isTouched: i == touchedIndex);
-          default:
-            return throw Error();
-        }
-      });
-
-  BarChartData mainBarData() {
-    return BarChartData(
-      titlesData: FlTitlesData(
-        show: true,
-        rightTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        topTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-            reservedSize: 38,
-          ),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-          ),
-        ),
-      ),
-      borderData: FlBorderData(
-        show: false,
-      ),
-      barGroups: showingGroups(),
-      gridData: FlGridData(show: false),
-    );
-  }
-
-//脂質
-  BarChartGroupData fatmakeGroupData(
-    int x,
-    double y, {
-    bool isTouched = false,
-    double width = 12,
-    List<int> showTooltips = const [],
-  }) {
-    return BarChartGroupData(
-      x: x,
-      barRods: [
-        BarChartRodData(
-          toY: y,
-          gradient: _barsGradient,
-          width: width,
-          backDrawRodData: BackgroundBarChartRodData(
-            show: true,
-            toY: 81,
-            color: Colors.grey[300],
-          ),
-        ),
-      ],
-      showingTooltipIndicators: showTooltips,
-    );
-  }
-
-  List<BarChartGroupData> fatshowingGroups() => List.generate(1, (i) {
-        switch (i) {
-          case 0:
-            return fatmakeGroupData(0, 56, isTouched: i == touchedIndex);
-          default:
-            return throw Error();
-        }
-      });
-
-  BarChartData fatmainBarData() {
-    return BarChartData(
-      titlesData: FlTitlesData(
-        show: true,
-        rightTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        topTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-            reservedSize: 38,
-          ),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-          ),
-        ),
-      ),
-      borderData: FlBorderData(
-        show: false,
-      ),
-      barGroups: fatshowingGroups(),
-      gridData: FlGridData(show: false),
-    );
-  }
-
-  //炭水化物
-  BarChartGroupData carbohydratemakeGroupData(
-    int x,
-    double y, {
-    bool isTouched = false,
-    double width = 12,
-    List<int> showTooltips = const [],
-  }) {
-    return BarChartGroupData(
-      x: x,
-      barRods: [
-        BarChartRodData(
-          toY: y,
-          gradient: _barsGradient,
-          width: width,
-          backDrawRodData: BackgroundBarChartRodData(
-            show: true,
-            toY: 435,
-            color: Colors.grey[300],
-          ),
-        ),
-      ],
-      showingTooltipIndicators: showTooltips,
-    );
-  }
-
-  List<BarChartGroupData> carbohydrateshowingGroups() => List.generate(1, (i) {
-        switch (i) {
-          case 0:
-            return carbohydratemakeGroupData(0, 356,
-                isTouched: i == touchedIndex);
-          default:
-            return throw Error();
-        }
-      });
-
-  BarChartData carbohydratemainBarData() {
-    return BarChartData(
-      titlesData: FlTitlesData(
-        show: true,
-        rightTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        topTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-            reservedSize: 38,
-          ),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-          ),
-        ),
-      ),
-      borderData: FlBorderData(
-        show: false,
-      ),
-      barGroups: carbohydrateshowingGroups(),
-      gridData: FlGridData(show: false),
     );
   }
 }

@@ -1,10 +1,11 @@
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
-import 'package:fit/add_page/AddPage.dart';
 import 'package:fit/Billing.dart';
 import 'package:fit/Calendar.dart';
 import 'package:fit/Fooddata.dart';
 import 'package:fit/glaf_page/Glaf.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:async';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
@@ -136,16 +137,47 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(
-          Icons.add,
-          size: 30,
-        ),
+      floatingActionButton: SpeedDial(
+        icon: Icons.add,
         backgroundColor: Colors.orange[400],
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddPage()));
-        },
+        children: [
+          SpeedDialChild(
+            child: FaIcon(
+              FontAwesomeIcons.mugHot,
+              color: Colors.white,
+            ),
+            label: '間食',
+            backgroundColor: Color.fromRGBO(253, 216, 53, 1),
+            onTap: () {},
+          ),
+          SpeedDialChild(
+            child: FaIcon(
+              FontAwesomeIcons.solidMoon,
+              color: Colors.white,
+            ),
+            label: '夕食',
+            backgroundColor: Color.fromRGBO(253, 216, 53, 1),
+            onTap: () {},
+          ),
+          SpeedDialChild(
+            child: FaIcon(
+              FontAwesomeIcons.solidSun,
+              color: Colors.white,
+            ),
+            label: '昼食',
+            backgroundColor: Color.fromRGBO(253, 216, 53, 1),
+            onTap: () {},
+          ),
+          SpeedDialChild(
+            child: FaIcon(
+              FontAwesomeIcons.cloudSun,
+              color: Colors.white,
+            ),
+            label: '朝食',
+            backgroundColor: Color.fromRGBO(253, 216, 53, 1),
+            onTap: () {},
+          ),
+        ],
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:fit/glaf_page/AllGlaf.dart';
+import 'package:fit/glaf_page/GlafData.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -123,12 +124,12 @@ class _glafState extends State<glaf> {
                           TextSpan(
                             children: [
                               TextSpan(
-                                  text: "100",
+                                  text: "6",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15)),
                               TextSpan(
-                                  text: ' / 1000',
+                                  text: ' / 109',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 12)),
@@ -386,210 +387,6 @@ class _glafState extends State<glaf> {
           ),
         ],
       ),
-    );
-  }
-
-  final _barsGradient = const LinearGradient(
-    colors: [
-      Color.fromRGBO(253, 216, 53, 1),
-      Color.fromRGBO(255, 167, 38, 1),
-    ],
-    begin: Alignment.bottomCenter,
-    end: Alignment.topCenter,
-  );
-  BarChartGroupData makeGroupData(
-    int x,
-    double y, {
-    bool isTouched = false,
-    double width = 12,
-    List<int> showTooltips = const [],
-  }) {
-    return BarChartGroupData(
-      x: x,
-      barRods: [
-        BarChartRodData(
-          toY: y,
-          gradient: _barsGradient,
-          width: width,
-          backDrawRodData: BackgroundBarChartRodData(
-            show: true,
-            toY: 109,
-            color: Colors.grey[300],
-          ),
-        ),
-      ],
-      showingTooltipIndicators: showTooltips,
-    );
-  }
-
-//タンパク質
-  List<BarChartGroupData> showingGroups() => List.generate(1, (i) {
-        switch (i) {
-          case 0:
-            return makeGroupData(0, 65, isTouched: i == touchedIndex);
-          default:
-            return throw Error();
-        }
-      });
-
-  BarChartData mainBarData() {
-    return BarChartData(
-      titlesData: FlTitlesData(
-        show: true,
-        rightTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        topTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-            reservedSize: 38,
-          ),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-          ),
-        ),
-      ),
-      borderData: FlBorderData(
-        show: false,
-      ),
-      barGroups: showingGroups(),
-      gridData: FlGridData(show: false),
-    );
-  }
-
-//脂質
-  BarChartGroupData fatmakeGroupData(
-    int x,
-    double y, {
-    bool isTouched = false,
-    double width = 12,
-    List<int> showTooltips = const [],
-  }) {
-    return BarChartGroupData(
-      x: x,
-      barRods: [
-        BarChartRodData(
-          toY: y,
-          gradient: _barsGradient,
-          width: width,
-          backDrawRodData: BackgroundBarChartRodData(
-            show: true,
-            toY: 81,
-            color: Colors.grey[300],
-          ),
-        ),
-      ],
-      showingTooltipIndicators: showTooltips,
-    );
-  }
-
-  List<BarChartGroupData> fatshowingGroups() => List.generate(1, (i) {
-        switch (i) {
-          case 0:
-            return fatmakeGroupData(0, 56, isTouched: i == touchedIndex);
-          default:
-            return throw Error();
-        }
-      });
-
-  BarChartData fatmainBarData() {
-    return BarChartData(
-      titlesData: FlTitlesData(
-        show: true,
-        rightTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        topTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-            reservedSize: 38,
-          ),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-          ),
-        ),
-      ),
-      borderData: FlBorderData(
-        show: false,
-      ),
-      barGroups: fatshowingGroups(),
-      gridData: FlGridData(show: false),
-    );
-  }
-
-  //炭水化物
-  BarChartGroupData carbohydratemakeGroupData(
-    int x,
-    double y, {
-    bool isTouched = false,
-    double width = 12,
-    List<int> showTooltips = const [],
-  }) {
-    return BarChartGroupData(
-      x: x,
-      barRods: [
-        BarChartRodData(
-          toY: y,
-          gradient: _barsGradient,
-          width: width,
-          backDrawRodData: BackgroundBarChartRodData(
-            show: true,
-            toY: 435,
-            color: Colors.grey[300],
-          ),
-        ),
-      ],
-      showingTooltipIndicators: showTooltips,
-    );
-  }
-
-  List<BarChartGroupData> carbohydrateshowingGroups() => List.generate(1, (i) {
-        switch (i) {
-          case 0:
-            return carbohydratemakeGroupData(0, 356,
-                isTouched: i == touchedIndex);
-          default:
-            return throw Error();
-        }
-      });
-
-  BarChartData carbohydratemainBarData() {
-    return BarChartData(
-      titlesData: FlTitlesData(
-        show: true,
-        rightTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        topTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-            reservedSize: 38,
-          ),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-          ),
-        ),
-      ),
-      borderData: FlBorderData(
-        show: false,
-      ),
-      barGroups: carbohydrateshowingGroups(),
-      gridData: FlGridData(show: false),
     );
   }
 }
