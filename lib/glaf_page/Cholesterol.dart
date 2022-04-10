@@ -50,7 +50,8 @@ class Cholesterol extends StatelessWidget {
                                 text: ' 129',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 15)),
-                            TextSpan(text: 'g', style: TextStyle(fontSize: 12)),
+                            TextSpan(
+                                text: 'mg', style: TextStyle(fontSize: 12)),
                           ],
                         ),
                       ),
