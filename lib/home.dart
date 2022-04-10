@@ -14,6 +14,9 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:async';
 
+////////////////////////////////////////////////////////////////////////
+//////////////////////////////Home画面//////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 /// Represents Home class
 class Home extends StatefulWidget {
   /// Creates the instance of Home
@@ -50,22 +53,16 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: const Color(0xffFAFAFA),
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.calendar_month,
-            color: Colors.black87,
-          ),
-        ),
         title: const Text(
           'Fitness App',
           style: TextStyle(color: Colors.black87),
         ),
+        //設定画面未定なので放置
         actions: [
           IconButton(
             onPressed: () {},
             icon: const Icon(
-              Icons.menu,
+              Icons.settings,
               color: Colors.black87,
             ),
           ),
@@ -77,7 +74,7 @@ class _HomeState extends State<Home> {
             calendar(),
             glaf(progressValue: progressValue),
             Billing(),
-            //分けられへんかったからこのまま
+            //↓分けられへんかったからこのまま
             Container(
               margin: const EdgeInsets.only(top: 10, left: 5, right: 5),
               padding: const EdgeInsets.all(8.0),
@@ -89,6 +86,9 @@ class _HomeState extends State<Home> {
               height: 290,
               // labelColor: Colors.orange[300],
               child: ContainedTabBarView(
+                tabBarViewProperties: TabBarViewProperties(
+                  physics: NeverScrollableScrollPhysics(),
+                ),
                 // ignore: prefer_const_literals_to_create_immutables
                 tabs: [
                   const Text(
@@ -113,6 +113,7 @@ class _HomeState extends State<Home> {
                   indicatorColor: Color.fromRGBO(255, 183, 77, 1),
                   indicatorWeight: 6.0,
                 ),
+
                 views: const [
                   MorningTab(),
                   LunchTab(),

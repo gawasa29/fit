@@ -301,13 +301,10 @@ class _AddFoodDataState extends State<AddFoodData> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
-                        Text('カロリー'),
+                        Text('カルシウム'),
                         Text(
-                          '100kcal',
-                        ),
-                        Text('カロリー'),
-                        Text(
-                          '100kcal',
+                          '20mg',
+                          style: TextStyle(fontSize: 17),
                         ),
                       ],
                     ),
@@ -320,13 +317,10 @@ class _AddFoodDataState extends State<AddFoodData> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
-                        Text('カロリー'),
+                        Text('ビタミンA'),
                         Text(
-                          '100kcal',
-                        ),
-                        Text('カロリー'),
-                        Text(
-                          '100kcal',
+                          '20μg',
+                          style: TextStyle(fontSize: 17),
                         ),
                       ],
                     ),
@@ -334,17 +328,79 @@ class _AddFoodDataState extends State<AddFoodData> {
                   Container(
                     padding: const EdgeInsets.only(
                       top: 5,
+                      bottom: 10,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
-                        Text('カロリー'),
+                        Text('ビタミンC'),
                         Text(
-                          '100kcal',
+                          '20μg',
+                          style: TextStyle(fontSize: 17),
                         ),
-                        Text('カロリー'),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 5,
+                      bottom: 10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text('鉄分'),
                         Text(
-                          '100kcal',
+                          '20mg',
+                          style: TextStyle(fontSize: 17),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 5,
+                      bottom: 10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text('コレステロール'),
+                        Text(
+                          '20mg',
+                          style: TextStyle(fontSize: 17),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 5,
+                      bottom: 10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text('ナトリウム'),
+                        Text(
+                          '20mg',
+                          style: TextStyle(fontSize: 17),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 5,
+                      bottom: 10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text('カリウム'),
+                        Text(
+                          '20mg',
+                          style: TextStyle(fontSize: 17),
                         ),
                       ],
                     ),

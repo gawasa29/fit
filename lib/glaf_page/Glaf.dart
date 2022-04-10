@@ -6,6 +6,9 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
+////////////////////////////////////////////////////////////////////////
+//////////////////////////////Home画面//////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 class glaf extends StatefulWidget {
   const glaf({Key? key, required this.progressValue}) : super(key: key);
   final double progressValue;
@@ -43,12 +46,14 @@ class _glafState extends State<glaf> {
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                   ),
+                  //↓ 円の大きさ
                   Container(
                     height: 180,
                     width: 180,
                     child: SfRadialGauge(axes: <RadialAxis>[
                       RadialAxis(
                           minimum: 0,
+                          //↓ 円の最大量（人によって変化する部分）
                           maximum: 1000,
                           showLabels: false,
                           showTicks: false,
@@ -61,7 +66,9 @@ class _glafState extends State<glaf> {
                           ),
                           pointers: const <GaugePointer>[
                             RangePointer(
-                                value: 450,
+                                //↓ 食べた総カロリー（人によって変化する部分）
+                                //なぜか数字が小さいと角張るけどわからんかったから放置
+                                value: 200,
                                 cornerStyle: CornerStyle.bothCurve,
                                 enableAnimation: true,
                                 animationDuration: 1200,
@@ -85,11 +92,13 @@ class _glafState extends State<glaf> {
                                 TextSpan(
                                   children: [
                                     TextSpan(
+                                        //↓ 食べた総カロリー（人によって変化する部分）
                                         text: "100",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 17)),
                                     TextSpan(
+                                        //↓ 円の最大量（人によって変化する部分）と不足分
                                         text: ' / 1000\n不足500Kcal',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
@@ -124,11 +133,13 @@ class _glafState extends State<glaf> {
                           TextSpan(
                             children: [
                               TextSpan(
+                                  //各人によって変わる数値//////////////////////////////////////////////
                                   text: "6",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15)),
                               TextSpan(
+                                  //各人によって変わる数値////////////////////////////////////////////////
                                   text: ' / 109',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -183,6 +194,7 @@ class _glafState extends State<glaf> {
                               TextSpan(
                                   text: "不足", style: TextStyle(fontSize: 12)),
                               TextSpan(
+                                  //各人によって変わる数値//////////////////////////////////////////////////////////////
                                   text: ' 500',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -377,6 +389,7 @@ class _glafState extends State<glaf> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
+                              //ここがNUllで通らんくて１入れたら通った。よくわからんかったから頼むorz
                               builder: (context) => AllGlaf(
                                     progressValue: 1,
                                   )));

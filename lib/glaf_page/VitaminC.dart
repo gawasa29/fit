@@ -2,8 +2,8 @@ import 'package:fit/glaf_page/GlafData.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class VitaminB extends StatelessWidget {
-  const VitaminB({
+class VitaminC extends StatelessWidget {
+  const VitaminC({
     Key? key,
   }) : super(key: key);
 
@@ -20,7 +20,7 @@ class VitaminB extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'ビタミンB',
+                    'ビタミンC',
                     style: TextStyle(fontSize: 12),
                   ),
                   Row(

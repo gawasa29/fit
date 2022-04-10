@@ -11,10 +11,14 @@ import 'package:fit/glaf_page/Potassium.dart';
 import 'package:fit/glaf_page/Sodium.dart';
 import 'package:fit/glaf_page/SugarBar.dart';
 import 'package:fit/glaf_page/VitaminA.dart';
-import 'package:fit/glaf_page/VitaminB.dart';
+import 'package:fit/glaf_page/VitaminC.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////栄養素//////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 
 class AllGlaf extends StatefulWidget {
   const AllGlaf({Key? key, required this.progressValue}) : super(key: key);
@@ -429,7 +433,7 @@ class _AllGlafState extends State<AllGlaf> {
                 DietaryFiber(),
                 Calcium(),
                 VitaminA(),
-                VitaminB(),
+                VitaminC(),
                 Iron(),
                 Cholesterol(),
                 Sodium(),

@@ -1,5 +1,10 @@
+import 'package:fit/home.dart';
 import 'package:fit/main.dart';
 import 'package:flutter/material.dart';
+
+////////////////////////////////////////////////////////////////////////
+//////////////////////////////マイフード//////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
 class MyFood extends StatefulWidget {
   const MyFood({Key? key}) : super(key: key);
@@ -27,8 +32,8 @@ class _MyFoodState extends State<MyFood> {
           actions: [
             IconButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MyHomePage()));
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Home()));
               },
               icon: const Icon(
                 Icons.done,
@@ -38,7 +43,7 @@ class _MyFoodState extends State<MyFood> {
           ],
           iconTheme: const IconThemeData(color: Colors.black87),
         ),
-        body: SafeArea(
+        body: SingleChildScrollView(
           child: Column(children: [
             Container(
               decoration: BoxDecoration(
@@ -72,6 +77,7 @@ class _MyFoodState extends State<MyFood> {
                               height: 20,
                               child: TextField(
                                 textInputAction: TextInputAction.next,
+                                textAlign: TextAlign.right,
                                 decoration: InputDecoration(
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
@@ -106,6 +112,7 @@ class _MyFoodState extends State<MyFood> {
                                 height: 20,
                                 child: TextField(
                                   textInputAction: TextInputAction.next,
+                                  textAlign: TextAlign.right,
                                   decoration: InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
@@ -145,6 +152,7 @@ class _MyFoodState extends State<MyFood> {
                                   height: 20,
                                   child: TextField(
                                     textInputAction: TextInputAction.next,
+                                    textAlign: TextAlign.right,
                                     decoration: InputDecoration(
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
@@ -185,6 +193,7 @@ class _MyFoodState extends State<MyFood> {
                                   height: 20,
                                   child: TextField(
                                     textInputAction: TextInputAction.next,
+                                    textAlign: TextAlign.right,
                                     decoration: InputDecoration(
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
@@ -225,6 +234,7 @@ class _MyFoodState extends State<MyFood> {
                                   height: 20,
                                   child: TextField(
                                     textInputAction: TextInputAction.next,
+                                    textAlign: TextAlign.right,
                                     decoration: InputDecoration(
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
@@ -262,6 +272,7 @@ class _MyFoodState extends State<MyFood> {
                                         height: 20,
                                         child: TextField(
                                           textInputAction: TextInputAction.next,
+                                          textAlign: TextAlign.right,
                                           decoration: InputDecoration(
                                             focusedBorder: UnderlineInputBorder(
                                               borderSide: BorderSide(
@@ -293,6 +304,7 @@ class _MyFoodState extends State<MyFood> {
                                         height: 20,
                                         child: TextField(
                                           textInputAction: TextInputAction.next,
+                                          textAlign: TextAlign.right,
                                           decoration: InputDecoration(
                                             focusedBorder: UnderlineInputBorder(
                                               borderSide: BorderSide(
@@ -363,7 +375,7 @@ class _MyFoodState extends State<MyFood> {
                   ),
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyHomePage()));
+                        MaterialPageRoute(builder: (context) => Home()));
                   },
                 ),
               ),
@@ -393,16 +405,17 @@ class _MyFoodState extends State<MyFood> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('脂肪'),
+                        Text('カルシウム'),
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
                             children: const [
                               SizedBox(
-                                width: 80,
+                                width: 150,
                                 height: 20,
                                 child: TextField(
                                   textInputAction: TextInputAction.next,
+                                  textAlign: TextAlign.right,
                                   decoration: InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
@@ -413,32 +426,7 @@ class _MyFoodState extends State<MyFood> {
                                 ),
                               ),
                               Text(
-                                'g',
-                              ),
-                            ],
-                          ),
-                        ),
-                        Text('脂肪'),
-                        Container(
-                          margin: const EdgeInsets.only(right: 20),
-                          child: Row(
-                            children: const [
-                              SizedBox(
-                                width: 80,
-                                height: 20,
-                                child: TextField(
-                                  textInputAction: TextInputAction.next,
-                                  decoration: InputDecoration(
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color:
-                                              Color.fromRGBO(255, 167, 38, 1)),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                'g',
+                                'mg',
                               ),
                             ],
                           ),
@@ -454,16 +442,17 @@ class _MyFoodState extends State<MyFood> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('脂肪'),
+                        Text('ビタミンA'),
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
                             children: const [
                               SizedBox(
-                                width: 80,
+                                width: 150,
                                 height: 20,
                                 child: TextField(
                                   textInputAction: TextInputAction.next,
+                                  textAlign: TextAlign.right,
                                   decoration: InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
@@ -474,32 +463,7 @@ class _MyFoodState extends State<MyFood> {
                                 ),
                               ),
                               Text(
-                                'g',
-                              ),
-                            ],
-                          ),
-                        ),
-                        Text('脂肪'),
-                        Container(
-                          margin: const EdgeInsets.only(right: 20),
-                          child: Row(
-                            children: const [
-                              SizedBox(
-                                width: 80,
-                                height: 20,
-                                child: TextField(
-                                  textInputAction: TextInputAction.next,
-                                  decoration: InputDecoration(
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color:
-                                              Color.fromRGBO(255, 167, 38, 1)),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                'g',
+                                'μg',
                               ),
                             ],
                           ),
@@ -515,16 +479,17 @@ class _MyFoodState extends State<MyFood> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('脂肪'),
+                        Text('ビタミンC'),
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
                             children: const [
                               SizedBox(
-                                width: 80,
+                                width: 150,
                                 height: 20,
                                 child: TextField(
                                   textInputAction: TextInputAction.next,
+                                  textAlign: TextAlign.right,
                                   decoration: InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
@@ -535,32 +500,7 @@ class _MyFoodState extends State<MyFood> {
                                 ),
                               ),
                               Text(
-                                'g',
-                              ),
-                            ],
-                          ),
-                        ),
-                        Text('脂肪'),
-                        Container(
-                          margin: const EdgeInsets.only(right: 20),
-                          child: Row(
-                            children: const [
-                              SizedBox(
-                                width: 80,
-                                height: 20,
-                                child: TextField(
-                                  textInputAction: TextInputAction.next,
-                                  decoration: InputDecoration(
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color:
-                                              Color.fromRGBO(255, 167, 38, 1)),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                'g',
+                                'μg',
                               ),
                             ],
                           ),
@@ -571,20 +511,22 @@ class _MyFoodState extends State<MyFood> {
                   Container(
                     padding: const EdgeInsets.only(
                       top: 5,
+                      bottom: 10,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('脂肪'),
+                        Text('鉄分'),
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
                             children: const [
                               SizedBox(
-                                width: 80,
+                                width: 150,
                                 height: 20,
                                 child: TextField(
                                   textInputAction: TextInputAction.next,
+                                  textAlign: TextAlign.right,
                                   decoration: InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
@@ -595,20 +537,33 @@ class _MyFoodState extends State<MyFood> {
                                 ),
                               ),
                               Text(
-                                'g',
+                                'mg',
                               ),
                             ],
                           ),
                         ),
-                        Text('脂肪'),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 5,
+                      bottom: 10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('コレステロール'),
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
                             children: const [
                               SizedBox(
-                                width: 80,
+                                width: 150,
                                 height: 20,
                                 child: TextField(
+                                  textInputAction: TextInputAction.next,
+                                  textAlign: TextAlign.right,
                                   decoration: InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
@@ -619,7 +574,81 @@ class _MyFoodState extends State<MyFood> {
                                 ),
                               ),
                               Text(
-                                'g',
+                                'mg',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 5,
+                      bottom: 10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('ナトリウム'),
+                        Container(
+                          margin: const EdgeInsets.only(right: 20),
+                          child: Row(
+                            children: const [
+                              SizedBox(
+                                width: 150,
+                                height: 20,
+                                child: TextField(
+                                  textInputAction: TextInputAction.next,
+                                  textAlign: TextAlign.right,
+                                  decoration: InputDecoration(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color:
+                                              Color.fromRGBO(255, 167, 38, 1)),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                'mg',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 5,
+                      bottom: 10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('カリウム'),
+                        Container(
+                          margin: const EdgeInsets.only(right: 20),
+                          child: Row(
+                            children: const [
+                              SizedBox(
+                                width: 150,
+                                height: 20,
+                                child: TextField(
+                                  textInputAction: TextInputAction.next,
+                                  textAlign: TextAlign.right,
+                                  decoration: InputDecoration(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color:
+                                              Color.fromRGBO(255, 167, 38, 1)),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                'mg',
                               ),
                             ],
                           ),

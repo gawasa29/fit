@@ -14,6 +14,7 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:async';
 
+//現時点では目標設定画面
 void main() {
   return runApp(MyApp());
 }
@@ -45,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final numbars = List<String>.generate(100, (index) => '$index');
 
-// ↓にPickerで選択したアイテムが代入される予定です。
+// Pickerで選択したアイテムが代入される予定
     String selectNumbar = '20';
     String selectNumbar2 = '50';
     String selectNumbar3 = '50';
@@ -395,6 +396,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text(
                     'タンパク質',
                   ),
+                  // 青い文字押したらピッカー表示（どこ押しても可能)
                   Row(
                     children: [
                       TextButton(
@@ -434,6 +436,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text(
                     '脂質',
                   ),
+                  // 青い文字押したらピッカー表示（どこ押しても可能)
                   Row(
                     children: [
                       TextButton(
@@ -473,6 +476,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text(
                     '炭水化物',
                   ),
+                  // 青い文字押したらピッカー表示（どこ押しても可能)
                   Row(
                     children: [
                       TextButton(

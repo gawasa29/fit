@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+////////////////////////////////////////////////////////////////////////
+//////////////////////////////カレンダー画面///////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///まだ未定なので放置
 class calendar extends StatelessWidget {
   const calendar({
     Key? key,
@@ -19,10 +23,23 @@ class calendar extends StatelessWidget {
               color: Colors.black87,
             ),
           ),
-          const Text(
-            '2022年 3月 21日',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
+          TextButton(
+              onPressed: () {},
+              child: Row(
+                children: [
+                  Text(
+                    '2022年 3月 21日',
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87),
+                  ),
+                  Icon(
+                    Icons.expand_more_outlined,
+                    color: Colors.black87,
+                  )
+                ],
+              )),
           IconButton(
             onPressed: () {},
             icon: const Icon(

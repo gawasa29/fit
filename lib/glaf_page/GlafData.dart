@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 
 int touchedIndex = -1;
 
+////////////////////////////////////////////////////////////////////////
+///////////////////全ての栄養素のグラフが格納されている////////////////////////
+//////////////////////////////////////////////////////////////////////
 final _barsGradient = const LinearGradient(
   colors: [
     Color.fromRGBO(253, 216, 53, 1),
@@ -19,6 +22,7 @@ BarChartGroupData makeGroupData(
   int x,
   double y, {
   bool isTouched = false,
+  //線の太さ
   double width = 12,
   List<int> showTooltips = const [],
 }) {
@@ -31,6 +35,7 @@ BarChartGroupData makeGroupData(
         width: width,
         backDrawRodData: BackgroundBarChartRodData(
           show: true,
+          //↓線の最大値////////////////////////////////////////////////////////////////////
           toY: 109,
           color: Colors.grey[300],
         ),
@@ -43,6 +48,7 @@ BarChartGroupData makeGroupData(
 List<BarChartGroupData> showingGroups() => List.generate(1, (i) {
       switch (i) {
         case 0:
+          /////////////////////////↓1日に摂取した量//////////////////////////////////////////////////////////////
           return makeGroupData(0, 65, isTouched: i == touchedIndex);
         default:
           return throw Error();

@@ -2,6 +2,10 @@ import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:fit/add_page/AddFoodData.dart';
 import 'package:flutter/material.dart';
 
+////////////////////////////////////////////////////////////////////////
+////////////////////////////検索後のページ////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+///ただどうやって反応させるかわからんかったから放置
 class SerchFoodData extends StatefulWidget {
   const SerchFoodData({Key? key}) : super(key: key);
 
