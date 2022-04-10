@@ -1,34 +1,52 @@
-import 'dart:async';
-import 'dart:math';
-import 'package:fl_chart/fl_chart.dart';
+import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:fit/Billing.dart';
+import 'package:fit/Calendar.dart';
+import 'package:fit/Fooddata.dart';
+import 'package:fit/add_page/AddPage.dart';
+import 'package:fit/glaf_page/Glaf.dart';
+import 'package:fit/home.dart';
+import 'package:fit/tab_page/DinnerTab.dart';
+import 'package:fit/tab_page/LunchTab.dart';
+import 'package:fit/tab_page/MorningTab.dart';
+import 'package:fit/tab_page/SnackTab.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'dart:async';
 
-class BarChartSample1 extends StatefulWidget {
-  final List<Color> availableColors = const [
-    Colors.purpleAccent,
-    Colors.yellow,
-    Colors.lightBlue,
-    Colors.orange,
-    Colors.pink,
-    Colors.redAccent,
-  ];
-
-  const BarChartSample1({Key? key}) : super(key: key);
+/// Represents Home class
+class Home extends StatefulWidget {
+  /// Creates the instance of Home
+  Home({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => BarChartSample1State();
+  _HomeState createState() => _HomeState();
 }
 
-class BarChartSample1State extends State<BarChartSample1> {
-  final Duration animDuration = const Duration(milliseconds: 250);
-
-  int touchedIndex = -1;
-
-  bool isPlaying = false;
+class _HomeState extends State<Home> {
+  late Timer _timer;
+  double progressValue = 0;
+  double secondaryProgressValue = 0;
+  // ignore: sort_constructors_first
+  _DeterminatePageState() {
+    _timer = Timer.periodic(const Duration(milliseconds: 100), (Timer _timer) {
+      setState(() {
+        progressValue++;
+        secondaryProgressValue = secondaryProgressValue + 2;
+        if (progressValue == 100) {
+          _timer.cancel();
+        }
+        if (secondaryProgressValue > 100) {
+          secondaryProgressValue = 100;
+        }
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: const Color(0xffFAFAFA),
@@ -53,209 +71,114 @@ class BarChartSample1State extends State<BarChartSample1> {
           ),
         ],
       ),
-      body: AspectRatio(
-        aspectRatio: 1,
-        child: Card(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-          color: const Color(0xff81e5cd),
-          child: Stack(
-            children: <Widget>[
-              Container(
-                width: 100,
-                height: 100,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: BarChart(
-                          isPlaying ? randomData() : mainBarData(),
-                          swapAnimationDuration: animDuration,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            calendar(),
+            glaf(progressValue: progressValue),
+            Billing(),
+            //分けられへんかったからこのまま
+            Container(
+              margin: const EdgeInsets.only(top: 10, left: 5, right: 5),
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                color: const Color(0xffFAFAFA),
+                borderRadius: BorderRadius.circular(10),
               ),
-            ],
-          ),
+              width: double.infinity,
+              height: 290,
+              // labelColor: Colors.orange[300],
+              child: ContainedTabBarView(
+                // ignore: prefer_const_literals_to_create_immutables
+                tabs: [
+                  const Text(
+                    '朝食',
+                    style: TextStyle(color: Colors.black87),
+                  ),
+                  const Text(
+                    '昼食',
+                    style: TextStyle(color: Colors.black87),
+                  ),
+                  const Text(
+                    '夕食',
+                    style: TextStyle(color: Colors.black87),
+                  ),
+                  const Text(
+                    '間食',
+                    style: TextStyle(color: Colors.black87),
+                  ),
+                ],
+                tabBarProperties: const TabBarProperties(
+                  height: 35.0,
+                  indicatorColor: Color.fromRGBO(255, 183, 77, 1),
+                  indicatorWeight: 6.0,
+                ),
+                views: const [
+                  MorningTab(),
+                  LunchTab(),
+                  DinnerTab(),
+                  SnackTab(),
+                ],
+                onChange: (index) => print(index),
+              ),
+            ),
+          ],
         ),
+      ),
+      floatingActionButton: SpeedDial(
+        icon: Icons.add,
+        backgroundColor: Colors.orange[400],
+        children: [
+          SpeedDialChild(
+            child: FaIcon(
+              FontAwesomeIcons.mugHot,
+              color: Colors.white,
+            ),
+            label: '間食',
+            backgroundColor: Color.fromRGBO(253, 216, 53, 1),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => AddPage()));
+            },
+          ),
+          SpeedDialChild(
+            child: FaIcon(
+              FontAwesomeIcons.solidMoon,
+              color: Colors.white,
+            ),
+            label: '夕食',
+            backgroundColor: Color.fromRGBO(253, 216, 53, 1),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => AddPage()));
+            },
+          ),
+          SpeedDialChild(
+            child: FaIcon(
+              FontAwesomeIcons.solidSun,
+              color: Colors.white,
+            ),
+            label: '昼食',
+            backgroundColor: Color.fromRGBO(253, 216, 53, 1),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => AddPage()));
+            },
+          ),
+          SpeedDialChild(
+            child: FaIcon(
+              FontAwesomeIcons.cloudSun,
+              color: Colors.white,
+            ),
+            label: '朝食',
+            backgroundColor: Color.fromRGBO(253, 216, 53, 1),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => AddPage()));
+            },
+          ),
+        ],
       ),
     );
-  }
-
-  BarChartGroupData makeGroupData(
-    int x,
-    double y, {
-    bool isTouched = false,
-    Color barColor = Colors.yellow,
-    double width = 10,
-    List<int> showTooltips = const [],
-  }) {
-    return BarChartGroupData(
-      x: x,
-      barRods: [
-        BarChartRodData(
-          toY: y,
-          color: barColor,
-          width: width,
-          backDrawRodData: BackgroundBarChartRodData(
-            show: true,
-            toY: 20,
-            color: Colors.grey[300],
-          ),
-        ),
-      ],
-      showingTooltipIndicators: showTooltips,
-    );
-  }
-
-  List<BarChartGroupData> showingGroups() => List.generate(3, (i) {
-        switch (i) {
-          case 0:
-            return makeGroupData(0, 10, isTouched: i == touchedIndex);
-          case 1:
-            return makeGroupData(1, 18, isTouched: i == touchedIndex);
-          case 2:
-            return makeGroupData(2, 20, isTouched: i == touchedIndex);
-          default:
-            return throw Error();
-        }
-      });
-
-  BarChartData mainBarData() {
-    return BarChartData(
-      barTouchData: BarTouchData(
-        touchCallback: (FlTouchEvent event, barTouchResponse) {
-          setState(() {
-            if (!event.isInterestedForInteractions ||
-                barTouchResponse == null ||
-                barTouchResponse.spot == null) {
-              touchedIndex = -1;
-              return;
-            }
-            touchedIndex = barTouchResponse.spot!.touchedBarGroupIndex;
-          });
-        },
-      ),
-      titlesData: FlTitlesData(
-        show: true,
-        rightTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        topTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-            getTitlesWidget: getTitles,
-            reservedSize: 38,
-          ),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-          ),
-        ),
-      ),
-      borderData: FlBorderData(
-        show: false,
-      ),
-      barGroups: showingGroups(),
-      gridData: FlGridData(show: false),
-    );
-  }
-
-  Widget getTitles(double value, TitleMeta meta) {
-    const style = TextStyle(
-      color: Colors.white,
-      fontWeight: FontWeight.bold,
-      fontSize: 14,
-    );
-    Widget text;
-    switch (value.toInt()) {
-      case 0:
-        text = const Text('タンパク質', style: style);
-        break;
-      case 1:
-        text = const Text('脂質', style: style);
-        break;
-      case 2:
-        text = const Text('炭水化物', style: style);
-        break;
-      default:
-        text = const Text('', style: style);
-        break;
-    }
-    return Padding(padding: const EdgeInsets.only(top: 16), child: text);
-  }
-
-  BarChartData randomData() {
-    return BarChartData(
-      barTouchData: BarTouchData(
-        enabled: false,
-      ),
-      titlesData: FlTitlesData(
-        show: true,
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: true,
-            getTitlesWidget: getTitles,
-            reservedSize: 38,
-          ),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-          ),
-        ),
-        topTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-          ),
-        ),
-        rightTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-          ),
-        ),
-      ),
-      borderData: FlBorderData(
-        show: false,
-      ),
-      barGroups: List.generate(3, (i) {
-        switch (i) {
-          case 0:
-            return makeGroupData(0, Random().nextInt(15).toDouble() + 6,
-                barColor: widget.availableColors[
-                    Random().nextInt(widget.availableColors.length)]);
-          case 1:
-            return makeGroupData(1, Random().nextInt(15).toDouble() + 6,
-                barColor: widget.availableColors[
-                    Random().nextInt(widget.availableColors.length)]);
-          case 2:
-            return makeGroupData(2, Random().nextInt(15).toDouble() + 6,
-                barColor: widget.availableColors[
-                    Random().nextInt(widget.availableColors.length)]);
-          default:
-            return throw Error();
-        }
-      }),
-      gridData: FlGridData(show: false),
-    );
-  }
-
-  Future<dynamic> refreshState() async {
-    setState(() {});
-    await Future<dynamic>.delayed(
-        animDuration + const Duration(milliseconds: 50));
-    if (isPlaying) {
-      await refreshState();
-    }
   }
 }

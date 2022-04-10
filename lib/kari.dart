@@ -1,46 +1,14 @@
-import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
-import 'package:fit/Billing.dart';
-import 'package:fit/Calendar.dart';
-import 'package:fit/Fooddata.dart';
-import 'package:fit/glaf_page/Glaf.dart';
-import 'package:fit/home.dart';
-import 'package:fit/tab_page/DinnerTab.dart';
-import 'package:fit/tab_page/LunchTab.dart';
-import 'package:fit/tab_page/MorningTab.dart';
-import 'package:fit/tab_page/SnackTab.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'dart:async';
+import 'package:flutter/cupertino.dart';
 
-void main() {
-  return runApp(MyApp());
-}
-
-/// Represents the MyApp class
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Radial Gauge Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: MyHomePage(),
-    );
-  }
-}
-
-/// Represents MyHomePage class
-class MyHomePage extends StatefulWidget {
-  /// Creates the instance of MyHomePage
-  MyHomePage({Key? key}) : super(key: key);
+class Target extends StatefulWidget {
+  const Target({Key? key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<Target> createState() => _TargetState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _TargetState extends State<Target> {
   @override
   Widget build(BuildContext context) {
     final numbars = List<String>.generate(100, (index) => '$index');
@@ -523,10 +491,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Color(0xffFAFAFA),
                 ),
               ),
-              onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
-              },
+              onPressed: () {},
             ),
           ),
         ),
