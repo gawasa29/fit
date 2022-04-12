@@ -1,14 +1,11 @@
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
-
-import 'package:fit/add_page/AddFoodData.dart';
-import 'package:fit/add_page/DinnerAdd.dart';
-import 'package:fit/add_page/LunchAdd.dart';
-import 'package:fit/add_page/MorningAdd%20.dart';
-import 'package:fit/add_page/MyFood.dart';
-import 'package:fit/add_page/SerchFoodData.dart';
-import 'package:fit/add_page/SnackAdd.dart';
-import 'package:fit/home.dart';
+import 'package:fit/ui/add_page/DinnerAdd.dart';
+import 'package:fit/ui/add_page/MyFood.dart';
 import 'package:flutter/material.dart';
+
+import 'LunchAdd.dart';
+import 'MorningAdd .dart';
+import 'SnackAdd.dart';
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////追加ページの大元///////////////////////////////
@@ -93,7 +90,7 @@ class _AddPageState extends State<AddPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => MyFood()));
+                                      builder: (context) => const MyFood()));
                             },
                           ),
                         ),
@@ -192,7 +189,7 @@ class _AddPageState extends State<AddPage> {
                   indicatorColor: Color.fromRGBO(255, 183, 77, 1),
                   indicatorWeight: 6.0,
                 ),
-                views: [
+                views: const [
                   MorningAdd(),
                   LunchAdd(),
                   DinnerAdd(),

@@ -1,6 +1,7 @@
-import 'package:fit/glaf_page/GlafData.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+
+import 'GlafData.dart';
 
 class Potassium extends StatelessWidget {
   const Potassium({
@@ -19,12 +20,12 @@ class Potassium extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'カリウム',
                     style: TextStyle(fontSize: 12),
                   ),
                   Row(
-                    children: [
+                    children: const [
                       SizedBox(width: 10),
                       Text.rich(
                         TextSpan(
@@ -64,7 +65,7 @@ class Potassium extends StatelessWidget {
         ),
         RotatedBox(
           quarterTurns: 1,
-          child: Container(
+          child: SizedBox(
             width: 10,
             height: 360,
             child: AspectRatio(
@@ -92,7 +93,7 @@ class Potassium extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
       ],

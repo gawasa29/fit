@@ -1,18 +1,6 @@
-import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
-import 'package:fit/Billing.dart';
-import 'package:fit/Calendar.dart';
-import 'package:fit/Fooddata.dart';
-import 'package:fit/glaf_page/Glaf.dart';
 import 'package:fit/home.dart';
-import 'package:fit/tab_page/DinnerTab.dart';
-import 'package:fit/tab_page/LunchTab.dart';
-import 'package:fit/tab_page/MorningTab.dart';
-import 'package:fit/tab_page/SnackTab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'dart:async';
 
 //現時点では目標設定画面
 void main() {
@@ -35,7 +23,7 @@ class MyApp extends StatelessWidget {
 /// Represents MyHomePage class
 class MyHomePage extends StatefulWidget {
   /// Creates the instance of MyHomePage
-  MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -63,11 +51,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextButton(
-                        child: Text('閉じる'),
+                        child: const Text('閉じる'),
                         onPressed: () => Navigator.of(context).pop(),
                       ),
                       TextButton(
-                        child: Text('決定'),
+                        child: const Text('決定'),
                         onPressed: () => Navigator.of(context).pop(),
                       ),
                     ],
@@ -151,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     height: 180,
                     child: Expanded(
                       child: Row(
@@ -210,7 +198,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text.rich(
                       TextSpan(
                         children: [
-                          TextSpan(
+                          const TextSpan(
                               text: "合計",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 15)),
@@ -224,10 +212,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Material(
+                  const Material(
                       color: Colors.white,
                       child: Text(
                         'PFC比率の割合は足して100％になるように設定してください',
@@ -269,11 +257,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         Container(
           color: Colors.white,
-          padding: EdgeInsets.only(left: 10, right: 10),
+          padding: const EdgeInsets.only(left: 10, right: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 '現在体重',
               ),
               Row(
@@ -301,12 +289,12 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         Container(
-          padding: EdgeInsets.only(left: 10, right: 10),
+          padding: const EdgeInsets.only(left: 10, right: 10),
           color: Colors.white,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 '目標体重',
               ),
               Row(
@@ -348,14 +336,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         Container(
-          padding: EdgeInsets.only(left: 10, right: 10),
+          padding: const EdgeInsets.only(left: 10, right: 10),
           color: Colors.white,
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     '目標カロリー',
                   ),
                   Row(
@@ -386,14 +374,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         Container(
-          padding: EdgeInsets.only(left: 10, right: 10),
+          padding: const EdgeInsets.only(left: 10, right: 10),
           color: Colors.white,
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'タンパク質',
                   ),
                   // 青い文字押したらピッカー表示（どこ押しても可能)
@@ -403,19 +391,19 @@ class _MyHomePageState extends State<MyHomePage> {
                         onPressed: () {
                           _cupertinoPicker();
                         },
-                        child: Text('${selectNumbar}%'),
+                        child: Text('$selectNumbar%'),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 15,
                       ),
-                      Text(
+                      const Text(
                         '81',
                         style: TextStyle(fontSize: 15),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
-                      Text(
+                      const Text(
                         'kg',
                       ),
                     ],
@@ -426,14 +414,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         Container(
-          padding: EdgeInsets.only(left: 10, right: 10),
+          padding: const EdgeInsets.only(left: 10, right: 10),
           color: Colors.white,
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     '脂質',
                   ),
                   // 青い文字押したらピッカー表示（どこ押しても可能)
@@ -443,19 +431,19 @@ class _MyHomePageState extends State<MyHomePage> {
                         onPressed: () {
                           _cupertinoPicker();
                         },
-                        child: Text('${selectNumbar2}%'),
+                        child: Text('$selectNumbar2%'),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 15,
                       ),
-                      Text(
+                      const Text(
                         '81',
                         style: TextStyle(fontSize: 15),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
-                      Text(
+                      const Text(
                         'kg',
                       ),
                     ],
@@ -466,14 +454,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         Container(
-          padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+          padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
           color: Colors.white,
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     '炭水化物',
                   ),
                   // 青い文字押したらピッカー表示（どこ押しても可能)
@@ -483,19 +471,19 @@ class _MyHomePageState extends State<MyHomePage> {
                         onPressed: () {
                           _cupertinoPicker();
                         },
-                        child: Text('${selectNumbar3}%'),
+                        child: Text('$selectNumbar3%'),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 15,
                       ),
-                      Text(
+                      const Text(
                         '81',
                         style: TextStyle(fontSize: 15),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
-                      Text(
+                      const Text(
                         'kg',
                       ),
                     ],
@@ -512,14 +500,14 @@ class _MyHomePageState extends State<MyHomePage> {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 primary: Colors.orange[400],
-                padding: EdgeInsets.only(top: 7, bottom: 7),
+                padding: const EdgeInsets.only(top: 7, bottom: 7),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
-                    side: BorderSide(
+                    side: const BorderSide(
                       color: Color.fromRGBO(255, 167, 38, 1),
                     )),
               ),
-              child: Text(
+              child: const Text(
                 '登録する',
                 style: TextStyle(
                   fontSize: 15,

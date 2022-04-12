@@ -1,10 +1,9 @@
-import 'dart:math';
-
-import 'package:fit/glaf_page/AllGlaf.dart';
-import 'package:fit/glaf_page/GlafData.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
+
+import 'AllGlaf.dart';
+import 'GlafData.dart';
 
 ////////////////////////////////////////////////////////////////////////
 //////////////////////////////Home画面//////////////////////////////////
@@ -47,7 +46,7 @@ class _glafState extends State<glaf> {
                     ),
                   ),
                   //↓ 円の大きさ
-                  Container(
+                  SizedBox(
                     height: 180,
                     width: 180,
                     child: SfRadialGauge(axes: <RadialAxis>[
@@ -84,7 +83,7 @@ class _glafState extends State<glaf> {
                                 color: Color(0xFF00A8B5),
                                 width: 0.22),
                           ],
-                          annotations: <GaugeAnnotation>[
+                          annotations: const <GaugeAnnotation>[
                             GaugeAnnotation(
                               positionFactor: 0.1,
                               angle: 90,
@@ -124,7 +123,7 @@ class _glafState extends State<glaf> {
                     width: 175,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         Text(
                           'タンパク質',
                           style: TextStyle(fontSize: 12),
@@ -152,7 +151,7 @@ class _glafState extends State<glaf> {
                   ),
                   RotatedBox(
                     quarterTurns: 1,
-                    child: Container(
+                    child: SizedBox(
                       width: 10,
                       height: 180,
                       child: AspectRatio(
@@ -187,7 +186,7 @@ class _glafState extends State<glaf> {
                     width: 175,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
+                      children: const [
                         Text.rich(
                           TextSpan(
                             children: [
@@ -212,7 +211,7 @@ class _glafState extends State<glaf> {
                     padding: const EdgeInsets.only(top: 10, bottom: 2),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         Text(
                           '脂質',
                           style: TextStyle(fontSize: 12),
@@ -238,7 +237,7 @@ class _glafState extends State<glaf> {
                   ),
                   RotatedBox(
                     quarterTurns: 1,
-                    child: Container(
+                    child: SizedBox(
                       width: 10,
                       height: 180,
                       child: AspectRatio(
@@ -271,7 +270,7 @@ class _glafState extends State<glaf> {
                     width: 175,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
+                      children: const [
                         Text.rich(
                           TextSpan(
                             children: [
@@ -295,7 +294,7 @@ class _glafState extends State<glaf> {
                     padding: const EdgeInsets.only(top: 10, bottom: 2),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         Text(
                           '炭水化物',
                           style: TextStyle(fontSize: 12),
@@ -321,7 +320,7 @@ class _glafState extends State<glaf> {
                   ),
                   RotatedBox(
                     quarterTurns: 1,
-                    child: Container(
+                    child: SizedBox(
                       width: 10,
                       height: 180,
                       child: AspectRatio(
@@ -356,7 +355,7 @@ class _glafState extends State<glaf> {
                     width: 175,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
+                      children: const [
                         Text.rich(
                           TextSpan(
                             children: [
@@ -379,7 +378,7 @@ class _glafState extends State<glaf> {
               ),
             ],
           ),
-          Container(
+          SizedBox(
             height: 33,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -390,11 +389,11 @@ class _glafState extends State<glaf> {
                           context,
                           MaterialPageRoute(
                               //ここがNUllで通らんくて１入れたら通った。よくわからんかったから頼むorz
-                              builder: (context) => AllGlaf(
+                              builder: (context) => const AllGlaf(
                                     progressValue: 1,
                                   )));
                     },
-                    child: Text('さらに表示 >'))
+                    child: const Text('さらに表示 >'))
               ],
             ),
           ),

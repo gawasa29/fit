@@ -1,4 +1,4 @@
-import 'package:fit/add_page/MyFood.dart';
+import 'package:fit/ui/add_page/MyFood.dart';
 import 'package:flutter/material.dart';
 
 class FoodData extends StatefulWidget {
@@ -31,8 +31,8 @@ class _FoodDataState extends State<FoodData> {
           actions: [
             IconButton(
               onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => MyFood()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const MyFood()));
               },
               icon: const Icon(
                 Icons.edit_outlined,

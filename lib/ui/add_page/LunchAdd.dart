@@ -1,6 +1,7 @@
-import 'package:fit/add_page/AddFoodData.dart';
-import 'package:fit/add_page/SerchFoodData.dart';
 import 'package:flutter/material.dart';
+
+import 'AddFoodData.dart';
+import 'SerchFoodData.dart';
 
 class LunchAdd extends StatelessWidget {
   const LunchAdd({Key? key}) : super(key: key);
@@ -16,12 +17,14 @@ class LunchAdd extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AddFoodData()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AddFoodData()));
                   },
                   child: Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: ListTile(
                           title: Text(
                             '白米',
@@ -39,9 +42,9 @@ class LunchAdd extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SerchFoodData()));
+                                  builder: (context) => const SerchFoodData()));
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.control_point_outlined,
                           color: Colors.black54,
                         ),
@@ -53,7 +56,7 @@ class LunchAdd extends StatelessWidget {
                   onTap: () {},
                   child: Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: ListTile(
                           title: Text(
                             '白米',
@@ -68,7 +71,7 @@ class LunchAdd extends StatelessWidget {
                       IconButton(
                         iconSize: 30,
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.control_point_outlined,
                           color: Colors.black54,
                         ),
@@ -78,12 +81,14 @@ class LunchAdd extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AddFoodData()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AddFoodData()));
                   },
                   child: Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: ListTile(
                           title: Text(
                             '白米',
@@ -98,7 +103,7 @@ class LunchAdd extends StatelessWidget {
                       IconButton(
                         iconSize: 30,
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.control_point_outlined,
                           color: Colors.black54,
                         ),

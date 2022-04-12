@@ -1,9 +1,10 @@
-import 'package:fit/glaf_page/GlafData.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class Calcium extends StatelessWidget {
-  const Calcium({
+import 'GlafData.dart';
+
+class Sodium extends StatelessWidget {
+  const Sodium({
     Key? key,
   }) : super(key: key);
 
@@ -19,12 +20,12 @@ class Calcium extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'カルシウム',
+                  const Text(
+                    'ナトリウム',
                     style: TextStyle(fontSize: 12),
                   ),
                   Row(
-                    children: [
+                    children: const [
                       SizedBox(width: 10),
                       Text.rich(
                         TextSpan(
@@ -64,7 +65,7 @@ class Calcium extends StatelessWidget {
         ),
         RotatedBox(
           quarterTurns: 1,
-          child: Container(
+          child: SizedBox(
             width: 10,
             height: 360,
             child: AspectRatio(
@@ -81,7 +82,7 @@ class Calcium extends StatelessWidget {
                       children: <Widget>[
                         Expanded(
                           child: BarChart(
-                            calciumBarData(),
+                            sodiumBarData(),
                           ),
                         ),
                       ],
@@ -92,10 +93,10 @@ class Calcium extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
-        Divider(
+        const Divider(
           color: Colors.grey,
           thickness: 0.5,
         ),

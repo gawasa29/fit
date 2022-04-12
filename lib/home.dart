@@ -1,18 +1,18 @@
+import 'dart:async';
+
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:fit/Billing.dart';
 import 'package:fit/Calendar.dart';
-import 'package:fit/Fooddata.dart';
-import 'package:fit/add_page/AddPage.dart';
-import 'package:fit/glaf_page/Glaf.dart';
-import 'package:fit/home.dart';
-import 'package:fit/tab_page/DinnerTab.dart';
-import 'package:fit/tab_page/LunchTab.dart';
-import 'package:fit/tab_page/MorningTab.dart';
-import 'package:fit/tab_page/SnackTab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'dart:async';
+
+import 'ui/add_page/AddPage.dart';
+import 'ui/glaf_page/Glaf.dart';
+import 'ui/tab_page/DinnerTab.dart';
+import 'ui/tab_page/LunchTab.dart';
+import 'ui/tab_page/MorningTab.dart';
+import 'ui/tab_page/SnackTab.dart';
 
 ////////////////////////////////////////////////////////////////////////
 //////////////////////////////Home画面//////////////////////////////////
@@ -20,7 +20,7 @@ import 'dart:async';
 /// Represents Home class
 class Home extends StatefulWidget {
   /// Creates the instance of Home
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -71,9 +71,9 @@ class _HomeState extends State<Home> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            calendar(),
+            const calendar(),
             glaf(progressValue: progressValue),
-            Billing(),
+            const Billing(),
             //↓分けられへんかったからこのまま
             Container(
               margin: const EdgeInsets.only(top: 10, left: 5, right: 5),
@@ -86,7 +86,7 @@ class _HomeState extends State<Home> {
               height: 290,
               // labelColor: Colors.orange[300],
               child: ContainedTabBarView(
-                tabBarViewProperties: TabBarViewProperties(
+                tabBarViewProperties: const TabBarViewProperties(
                   physics: NeverScrollableScrollPhysics(),
                 ),
                 // ignore: prefer_const_literals_to_create_immutables
@@ -131,51 +131,51 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.orange[400],
         children: [
           SpeedDialChild(
-            child: FaIcon(
+            child: const FaIcon(
               FontAwesomeIcons.mugHot,
               color: Colors.white,
             ),
             label: '間食',
-            backgroundColor: Color.fromRGBO(253, 216, 53, 1),
+            backgroundColor: const Color.fromRGBO(253, 216, 53, 1),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => AddPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const AddPage()));
             },
           ),
           SpeedDialChild(
-            child: FaIcon(
+            child: const FaIcon(
               FontAwesomeIcons.solidMoon,
               color: Colors.white,
             ),
             label: '夕食',
-            backgroundColor: Color.fromRGBO(253, 216, 53, 1),
+            backgroundColor: const Color.fromRGBO(253, 216, 53, 1),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => AddPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const AddPage()));
             },
           ),
           SpeedDialChild(
-            child: FaIcon(
+            child: const FaIcon(
               FontAwesomeIcons.solidSun,
               color: Colors.white,
             ),
             label: '昼食',
-            backgroundColor: Color.fromRGBO(253, 216, 53, 1),
+            backgroundColor: const Color.fromRGBO(253, 216, 53, 1),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => AddPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const AddPage()));
             },
           ),
           SpeedDialChild(
-            child: FaIcon(
+            child: const FaIcon(
               FontAwesomeIcons.cloudSun,
               color: Colors.white,
             ),
             label: '朝食',
-            backgroundColor: Color.fromRGBO(253, 216, 53, 1),
+            backgroundColor: const Color.fromRGBO(253, 216, 53, 1),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => AddPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const AddPage()));
             },
           ),
         ],

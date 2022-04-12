@@ -1,20 +1,18 @@
-import 'dart:math';
-
 import 'package:fit/Billing.dart';
-import 'package:fit/glaf_page/Calcium.dart';
-import 'package:fit/glaf_page/Cholesterol.dart';
-import 'package:fit/glaf_page/DietaryFiber.dart';
-
-import 'package:fit/glaf_page/GlafData.dart';
-import 'package:fit/glaf_page/Iron.dart';
-import 'package:fit/glaf_page/Potassium.dart';
-import 'package:fit/glaf_page/Sodium.dart';
-import 'package:fit/glaf_page/SugarBar.dart';
-import 'package:fit/glaf_page/VitaminA.dart';
-import 'package:fit/glaf_page/VitaminC.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
+
+import 'Calcium.dart';
+import 'Cholesterol.dart';
+import 'DietaryFiber.dart';
+import 'GlafData.dart';
+import 'Iron.dart';
+import 'Potassium.dart';
+import 'Sodium.dart';
+import 'SugarBar.dart';
+import 'VitaminA.dart';
+import 'VitaminC.dart';
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////栄養素//////////////////////////////////
@@ -69,7 +67,7 @@ class _AllGlafState extends State<AllGlaf> {
                               fontWeight: FontWeight.bold, fontSize: 16),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         height: 180,
                         width: 180,
                         child: SfRadialGauge(axes: <RadialAxis>[
@@ -103,7 +101,7 @@ class _AllGlafState extends State<AllGlaf> {
                                     color: Color(0xFF00A8B5),
                                     width: 0.22),
                               ],
-                              annotations: <GaugeAnnotation>[
+                              annotations: const <GaugeAnnotation>[
                                 GaugeAnnotation(
                                   positionFactor: 0.1,
                                   angle: 90,
@@ -142,7 +140,7 @@ class _AllGlafState extends State<AllGlaf> {
                         width: 175,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
+                          children: const [
                             Text(
                               'タンパク質',
                               style: TextStyle(fontSize: 12),
@@ -168,7 +166,7 @@ class _AllGlafState extends State<AllGlaf> {
                       ),
                       RotatedBox(
                         quarterTurns: 1,
-                        child: Container(
+                        child: SizedBox(
                           width: 10,
                           height: 180,
                           child: AspectRatio(
@@ -204,7 +202,7 @@ class _AllGlafState extends State<AllGlaf> {
                         width: 175,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
+                          children: const [
                             Text.rich(
                               TextSpan(
                                 children: [
@@ -230,7 +228,7 @@ class _AllGlafState extends State<AllGlaf> {
                         padding: const EdgeInsets.only(top: 10, bottom: 2),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
+                          children: const [
                             Text(
                               '脂質',
                               style: TextStyle(fontSize: 12),
@@ -256,7 +254,7 @@ class _AllGlafState extends State<AllGlaf> {
                       ),
                       RotatedBox(
                         quarterTurns: 1,
-                        child: Container(
+                        child: SizedBox(
                           width: 10,
                           height: 180,
                           child: AspectRatio(
@@ -290,7 +288,7 @@ class _AllGlafState extends State<AllGlaf> {
                         width: 175,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
+                          children: const [
                             Text.rich(
                               TextSpan(
                                 children: [
@@ -316,7 +314,7 @@ class _AllGlafState extends State<AllGlaf> {
                         padding: const EdgeInsets.only(top: 10, bottom: 2),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
+                          children: const [
                             Text(
                               '炭水化物',
                               style: TextStyle(fontSize: 12),
@@ -342,7 +340,7 @@ class _AllGlafState extends State<AllGlaf> {
                       ),
                       RotatedBox(
                         quarterTurns: 1,
-                        child: Container(
+                        child: SizedBox(
                           width: 10,
                           height: 180,
                           child: AspectRatio(
@@ -378,7 +376,7 @@ class _AllGlafState extends State<AllGlaf> {
                         width: 175,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
+                          children: const [
                             Text.rich(
                               TextSpan(
                                 children: [
@@ -404,7 +402,7 @@ class _AllGlafState extends State<AllGlaf> {
                 ],
               ),
             ),
-            Billing(),
+            const Billing(),
             Align(
               alignment: Alignment.centerLeft,
               child: Container(
@@ -428,7 +426,7 @@ class _AllGlafState extends State<AllGlaf> {
               margin: const EdgeInsets.only(left: 5, right: 5, bottom: 30),
               padding: const EdgeInsets.only(
                   top: 10, bottom: 15, left: 22, right: 13),
-              child: Column(children: [
+              child: Column(children: const [
                 Sugar(),
                 DietaryFiber(),
                 Calcium(),

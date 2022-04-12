@@ -1,9 +1,10 @@
-import 'package:fit/glaf_page/GlafData.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class Iron extends StatelessWidget {
-  const Iron({
+import 'GlafData.dart';
+
+class Sugar extends StatelessWidget {
+  const Sugar({
     Key? key,
   }) : super(key: key);
 
@@ -19,12 +20,12 @@ class Iron extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    '鉄分',
+                  const Text(
+                    '糖質',
                     style: TextStyle(fontSize: 12),
                   ),
                   Row(
-                    children: [
+                    children: const [
                       SizedBox(width: 10),
                       Text.rich(
                         TextSpan(
@@ -64,7 +65,7 @@ class Iron extends StatelessWidget {
         ),
         RotatedBox(
           quarterTurns: 1,
-          child: Container(
+          child: SizedBox(
             width: 10,
             height: 360,
             child: AspectRatio(
@@ -81,7 +82,7 @@ class Iron extends StatelessWidget {
                       children: <Widget>[
                         Expanded(
                           child: BarChart(
-                            ironBarData(),
+                            sugarBarData(),
                           ),
                         ),
                       ],
@@ -92,10 +93,10 @@ class Iron extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
-        Divider(
+        const Divider(
           color: Colors.grey,
           thickness: 0.5,
         ),

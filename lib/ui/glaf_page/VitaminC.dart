@@ -1,9 +1,10 @@
-import 'package:fit/glaf_page/GlafData.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class VitaminA extends StatelessWidget {
-  const VitaminA({
+import 'GlafData.dart';
+
+class VitaminC extends StatelessWidget {
+  const VitaminC({
     Key? key,
   }) : super(key: key);
 
@@ -19,12 +20,12 @@ class VitaminA extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'ビタミンA',
+                  const Text(
+                    'ビタミンC',
                     style: TextStyle(fontSize: 12),
                   ),
                   Row(
-                    children: [
+                    children: const [
                       SizedBox(width: 10),
                       Text.rich(
                         TextSpan(
@@ -64,7 +65,7 @@ class VitaminA extends StatelessWidget {
         ),
         RotatedBox(
           quarterTurns: 1,
-          child: Container(
+          child: SizedBox(
             width: 10,
             height: 360,
             child: AspectRatio(
@@ -81,7 +82,7 @@ class VitaminA extends StatelessWidget {
                       children: <Widget>[
                         Expanded(
                           child: BarChart(
-                            vitaminABarData(),
+                            vitaminBBarData(),
                           ),
                         ),
                       ],
@@ -92,10 +93,10 @@ class VitaminA extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
-        Divider(
+        const Divider(
           color: Colors.grey,
           thickness: 0.5,
         ),

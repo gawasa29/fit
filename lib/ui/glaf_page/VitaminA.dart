@@ -1,9 +1,10 @@
-import 'package:fit/glaf_page/GlafData.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class Sodium extends StatelessWidget {
-  const Sodium({
+import 'GlafData.dart';
+
+class VitaminA extends StatelessWidget {
+  const VitaminA({
     Key? key,
   }) : super(key: key);
 
@@ -19,12 +20,12 @@ class Sodium extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'ナトリウム',
+                  const Text(
+                    'ビタミンA',
                     style: TextStyle(fontSize: 12),
                   ),
                   Row(
-                    children: [
+                    children: const [
                       SizedBox(width: 10),
                       Text.rich(
                         TextSpan(
@@ -51,7 +52,7 @@ class Sodium extends StatelessWidget {
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 15)),
                             TextSpan(
-                                text: 'mg', style: TextStyle(fontSize: 12)),
+                                text: 'μg', style: TextStyle(fontSize: 12)),
                           ],
                         ),
                       ),
@@ -64,7 +65,7 @@ class Sodium extends StatelessWidget {
         ),
         RotatedBox(
           quarterTurns: 1,
-          child: Container(
+          child: SizedBox(
             width: 10,
             height: 360,
             child: AspectRatio(
@@ -81,7 +82,7 @@ class Sodium extends StatelessWidget {
                       children: <Widget>[
                         Expanded(
                           child: BarChart(
-                            sodiumBarData(),
+                            vitaminABarData(),
                           ),
                         ),
                       ],
@@ -92,10 +93,10 @@ class Sodium extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
-        Divider(
+        const Divider(
           color: Colors.grey,
           thickness: 0.5,
         ),

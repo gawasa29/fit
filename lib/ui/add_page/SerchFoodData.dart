@@ -1,6 +1,6 @@
-import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
-import 'package:fit/add_page/AddFoodData.dart';
 import 'package:flutter/material.dart';
+
+import 'AddFoodData.dart';
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////検索後のページ////////////////////////////////
@@ -85,11 +85,11 @@ class _SerchFoodDataState extends State<SerchFoodData> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AddFoodData()));
+                              builder: (context) => const AddFoodData()));
                     },
                     child: Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                           child: ListTile(
                             title: Text(
                               '白米',
@@ -107,9 +107,10 @@ class _SerchFoodDataState extends State<SerchFoodData> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SerchFoodData()));
+                                    builder: (context) =>
+                                        const SerchFoodData()));
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.control_point_outlined,
                             color: Colors.black54,
                           ),
@@ -122,11 +123,11 @@ class _SerchFoodDataState extends State<SerchFoodData> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AddFoodData()));
+                              builder: (context) => const AddFoodData()));
                     },
                     child: Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                           child: ListTile(
                             title: Text(
                               '白米',
@@ -141,7 +142,7 @@ class _SerchFoodDataState extends State<SerchFoodData> {
                         IconButton(
                           iconSize: 30,
                           onPressed: () {},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.control_point_outlined,
                             color: Colors.black54,
                           ),
@@ -154,11 +155,11 @@ class _SerchFoodDataState extends State<SerchFoodData> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AddFoodData()));
+                              builder: (context) => const AddFoodData()));
                     },
                     child: Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                           child: ListTile(
                             title: Text(
                               '白米',
@@ -173,7 +174,7 @@ class _SerchFoodDataState extends State<SerchFoodData> {
                         IconButton(
                           iconSize: 30,
                           onPressed: () {},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.control_point_outlined,
                             color: Colors.black54,
                           ),
