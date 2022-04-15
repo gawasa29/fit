@@ -1,27 +1,28 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-import 'GlafData.dart';
+import '../../model/GlafData.dart';
 
-class Sodium extends StatelessWidget {
-  const Sodium({
+class Calcium extends StatelessWidget {
+  const Calcium({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Column(
       children: [
         Row(
           children: [
             Container(
               padding: const EdgeInsets.only(top: 9, bottom: 5),
-              width: 340,
+              width: size.width * 0.85,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    'ナトリウム',
+                    'カルシウム',
                     style: TextStyle(fontSize: 12),
                   ),
                   Row(
@@ -82,7 +83,7 @@ class Sodium extends StatelessWidget {
                       children: <Widget>[
                         Expanded(
                           child: BarChart(
-                            sodiumBarData(),
+                            calciumBarData(),
                           ),
                         ),
                       ],

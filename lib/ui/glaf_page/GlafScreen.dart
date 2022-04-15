@@ -2,11 +2,11 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
-import 'AllGlaf.dart';
-import 'GlafData.dart';
+import 'AllGlafBarScreen.dart';
+import '../model/GlafData.dart';
 
 ////////////////////////////////////////////////////////////////////////
-//////////////////////////////Home画面//////////////////////////////////
+///////////////////////////Home画面のグラフ///////////////////////////////
 ///////////////////////////////////////////////////////////////////////
 class glaf extends StatefulWidget {
   const glaf({Key? key, required this.progressValue}) : super(key: key);
@@ -389,7 +389,7 @@ class _glafState extends State<glaf> {
                           context,
                           MaterialPageRoute(
                               //ここがNUllで通らんくて１入れたら通った。よくわからんかったから頼むorz
-                              builder: (context) => const AllGlaf(
+                              builder: (context) => const AllGlafBar(
                                     progressValue: 1,
                                   )));
                     },

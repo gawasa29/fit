@@ -1,4 +1,4 @@
-import 'package:fit/home.dart';
+import 'package:fit/homeScreen.dart';
 import 'package:fit/main.dart';
 import 'package:flutter/material.dart';
 

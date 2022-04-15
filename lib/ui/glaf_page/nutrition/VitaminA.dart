@@ -1,27 +1,28 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-import 'GlafData.dart';
+import '../../model/GlafData.dart';
 
-class Cholesterol extends StatelessWidget {
-  const Cholesterol({
+class VitaminA extends StatelessWidget {
+  const VitaminA({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Column(
       children: [
         Row(
           children: [
             Container(
               padding: const EdgeInsets.only(top: 9, bottom: 5),
-              width: 340,
+              width: size.width * 0.85,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    'コレステロール',
+                    'ビタミンA',
                     style: TextStyle(fontSize: 12),
                   ),
                   Row(
@@ -52,7 +53,7 @@ class Cholesterol extends StatelessWidget {
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 15)),
                             TextSpan(
-                                text: 'mg', style: TextStyle(fontSize: 12)),
+                                text: 'μg', style: TextStyle(fontSize: 12)),
                           ],
                         ),
                       ),
@@ -82,7 +83,7 @@ class Cholesterol extends StatelessWidget {
                       children: <Widget>[
                         Expanded(
                           child: BarChart(
-                            cholesterolBarData(),
+                            vitaminABarData(),
                           ),
                         ),
                       ],

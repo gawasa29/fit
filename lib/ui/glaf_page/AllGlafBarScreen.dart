@@ -1,36 +1,37 @@
-import 'package:fit/Billing.dart';
+import 'package:fit/ui/Billing/BillingScreen.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
-import 'Calcium.dart';
-import 'Cholesterol.dart';
-import 'DietaryFiber.dart';
-import 'GlafData.dart';
-import 'Iron.dart';
-import 'Potassium.dart';
-import 'Sodium.dart';
-import 'SugarBar.dart';
-import 'VitaminA.dart';
-import 'VitaminC.dart';
+import 'nutrition/Calcium.dart';
+import 'nutrition/Cholesterol.dart';
+import 'nutrition/DietaryFiber.dart';
+import '../model/GlafData.dart';
+import 'nutrition/Iron.dart';
+import 'nutrition/Potassium.dart';
+import 'nutrition/Sodium.dart';
+import 'nutrition/SugarBar.dart';
+import 'nutrition/VitaminA.dart';
+import 'nutrition/VitaminC.dart';
 
 ////////////////////////////////////////////////////////////////////////
-////////////////////////////////栄養素//////////////////////////////////
+///////////////////////////さらに表示の先の画面/////////////////////////////
 ///////////////////////////////////////////////////////////////////////
 
-class AllGlaf extends StatefulWidget {
-  const AllGlaf({Key? key, required this.progressValue}) : super(key: key);
+class AllGlafBar extends StatefulWidget {
+  const AllGlafBar({Key? key, required this.progressValue}) : super(key: key);
   final double progressValue;
 
   @override
-  State<AllGlaf> createState() => _AllGlafState();
+  State<AllGlafBar> createState() => _AllGlafBarState();
 }
 
-class _AllGlafState extends State<AllGlaf> {
+class _AllGlafBarState extends State<AllGlafBar> {
   int touchedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(

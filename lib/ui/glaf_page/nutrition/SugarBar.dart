@@ -1,27 +1,28 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-import 'GlafData.dart';
+import '../../model/GlafData.dart';
 
-class Iron extends StatelessWidget {
-  const Iron({
+class Sugar extends StatelessWidget {
+  const Sugar({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Column(
       children: [
         Row(
           children: [
             Container(
               padding: const EdgeInsets.only(top: 9, bottom: 5),
-              width: 340,
+              width: size.width * 0.85,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    '鉄分',
+                    '糖質',
                     style: TextStyle(fontSize: 12),
                   ),
                   Row(
@@ -82,7 +83,7 @@ class Iron extends StatelessWidget {
                       children: <Widget>[
                         Expanded(
                           child: BarChart(
-                            ironBarData(),
+                            sugarBarData(),
                           ),
                         ),
                       ],

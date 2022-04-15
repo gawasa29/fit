@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'AddFoodData.dart';
-import 'SerchFoodData.dart';
+import '../addFoodData/AddFoodDataScreen.dart';
+import '../SerchFoodDataScreen.dart';
 
-class MorningAdd extends StatelessWidget {
-  const MorningAdd({Key? key}) : super(key: key);
+class LunchAdd extends StatelessWidget {
+  const LunchAdd({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

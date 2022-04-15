@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'AddFoodData.dart';
-import 'SerchFoodData.dart';
+import '../addFoodData/AddFoodDataScreen.dart';
+import '../SerchFoodDataScreen.dart';
 
 class DinnerAdd extends StatelessWidget {
   const DinnerAdd({Key? key}) : super(key: key);

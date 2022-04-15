@@ -1,4 +1,4 @@
-import 'package:fit/FoodData.dart';
+import 'package:fit/ui/foodData/FoodDataScreen.dart';
 import 'package:flutter/material.dart';
 
 class SnackTab extends StatelessWidget {

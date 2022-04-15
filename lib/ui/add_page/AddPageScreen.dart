@@ -1,11 +1,11 @@
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
-import 'package:fit/ui/add_page/DinnerAdd.dart';
-import 'package:fit/ui/add_page/MyFood.dart';
+import 'package:fit/ui/add_page/times_page/DinnerAdd.dart';
+import 'package:fit/ui/add_page/myFood/MyFoodScreen.dart';
 import 'package:flutter/material.dart';
 
-import 'LunchAdd.dart';
-import 'MorningAdd .dart';
-import 'SnackAdd.dart';
+import 'times_page/LunchAdd.dart';
+import 'times_page/MorningAdd .dart';
+import 'times_page/SnackAdd.dart';
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////追加ページの大元///////////////////////////////
@@ -20,6 +20,7 @@ class AddPage extends StatefulWidget {
 class _AddPageState extends State<AddPage> {
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
@@ -32,7 +33,7 @@ class _AddPageState extends State<AddPage> {
         ),
         iconTheme: const IconThemeData(color: Colors.black87),
       ),
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
@@ -63,17 +64,17 @@ class _AddPageState extends State<AddPage> {
                 color: Colors.orange[100],
                 child: Container(
                     margin: const EdgeInsets.only(
-                        top: 15, bottom: 15, left: 10, right: 10),
+                        top: 15, bottom: 15, left: 5, right: 5),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         SizedBox(
                           child: ElevatedButton(
                             child: Column(
-                              children: const [
+                              children: [
                                 SizedBox(
-                                  height: 60,
-                                  width: 88,
+                                  width: size.width * 0.35,
+                                  height: size.height * 0.1,
                                 ),
                                 Text('MYフード')
                               ],
@@ -97,32 +98,10 @@ class _AddPageState extends State<AddPage> {
                         SizedBox(
                           child: ElevatedButton(
                             child: Column(
-                              children: const [
+                              children: [
                                 SizedBox(
-                                  height: 60,
-                                  width: 88,
-                                ),
-                                Text('MYレシピ')
-                              ],
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              elevation: 0,
-                              primary: Colors.white,
-                              onPrimary: Colors.black87,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            onPressed: () {},
-                          ),
-                        ),
-                        SizedBox(
-                          child: ElevatedButton(
-                            child: Column(
-                              children: const [
-                                SizedBox(
-                                  height: 60,
-                                  width: 88,
+                                  width: size.width * 0.35,
+                                  height: size.height * 0.1,
                                 ),
                                 Text('バーコード')
                               ],
@@ -162,7 +141,7 @@ class _AddPageState extends State<AddPage> {
                 borderRadius: BorderRadius.circular(10),
               ),
               width: double.infinity,
-              height: 400,
+              height: size.height * 0.5,
               // labelColor: Colors.orange[300],
               child: ContainedTabBarView(
                 // ignore: prefer_const_literals_to_create_immutables

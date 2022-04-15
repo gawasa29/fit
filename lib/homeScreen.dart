@@ -1,14 +1,14 @@
 import 'dart:async';
 
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
-import 'package:fit/Billing.dart';
-import 'package:fit/Calendar.dart';
+import 'package:fit/ui/Billing/BillingScreen.dart';
+import 'package:fit/ui/calendar/CalendarScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'ui/add_page/AddPage.dart';
-import 'ui/glaf_page/Glaf.dart';
+import 'ui/add_page/AddPageScreen.dart';
+import 'ui/glaf_page/GlafScreen.dart';
 import 'ui/tab_page/DinnerTab.dart';
 import 'ui/tab_page/LunchTab.dart';
 import 'ui/tab_page/MorningTab.dart';

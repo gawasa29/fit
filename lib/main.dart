@@ -1,4 +1,4 @@
-import 'package:fit/home.dart';
+import 'package:fit/homeScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -42,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
       showCupertinoModalPopup(
           context: context,
           builder: (context) {
+            final Size size = MediaQuery.of(context).size;
             return Container(
               height: 400,
               color: Colors.white,
@@ -240,289 +241,291 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         iconTheme: const IconThemeData(color: Colors.black87),
       ),
-      body: Column(children: [
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Container(
-            margin: const EdgeInsets.only(
-              top: 10,
-              bottom: 10,
-              right: 5,
-              left: 10,
-            ),
-            child: const Text(
-              '目標',
-            ),
-          ),
-        ),
-        Container(
-          color: Colors.white,
-          padding: const EdgeInsets.only(left: 10, right: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                '現在体重',
-              ),
-              Row(
-                children: const [
-                  SizedBox(
-                    width: 75,
-                    child: TextField(
-                      textAlign: TextAlign.right,
-                      textInputAction: TextInputAction.next,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "未設定",
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    'kg',
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.only(left: 10, right: 10),
-          color: Colors.white,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                '目標体重',
-              ),
-              Row(
-                children: const [
-                  SizedBox(
-                    width: 75,
-                    child: TextField(
-                      textAlign: TextAlign.right,
-                      textInputAction: TextInputAction.next,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "未設定",
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    'kg',
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Container(
-            margin: const EdgeInsets.only(
-              top: 10,
-              bottom: 10,
-              right: 5,
-              left: 10,
-            ),
-            child: const Text(
-              '栄養素の目標設定',
-            ),
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.only(left: 10, right: 10),
-          color: Colors.white,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    '目標カロリー',
-                  ),
-                  Row(
-                    children: const [
-                      SizedBox(
-                        width: 75,
-                        child: TextField(
-                          textAlign: TextAlign.right,
-                          textInputAction: TextInputAction.next,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "2900",
-                            hintStyle: TextStyle(color: Colors.blue),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        'kcal',
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.only(left: 10, right: 10),
-          color: Colors.white,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'タンパク質',
-                  ),
-                  // 青い文字押したらピッカー表示（どこ押しても可能)
-                  Row(
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          _cupertinoPicker();
-                        },
-                        child: Text('$selectNumbar%'),
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      const Text(
-                        '81',
-                        style: TextStyle(fontSize: 15),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      const Text(
-                        'kg',
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.only(left: 10, right: 10),
-          color: Colors.white,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    '脂質',
-                  ),
-                  // 青い文字押したらピッカー表示（どこ押しても可能)
-                  Row(
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          _cupertinoPicker();
-                        },
-                        child: Text('$selectNumbar2%'),
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      const Text(
-                        '81',
-                        style: TextStyle(fontSize: 15),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      const Text(
-                        'kg',
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-          color: Colors.white,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    '炭水化物',
-                  ),
-                  // 青い文字押したらピッカー表示（どこ押しても可能)
-                  Row(
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          _cupertinoPicker();
-                        },
-                        child: Text('$selectNumbar3%'),
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      const Text(
-                        '81',
-                        style: TextStyle(fontSize: 15),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      const Text(
-                        'kg',
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(right: 40.0, left: 40.0, top: 40),
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(minWidth: double.infinity),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.orange[400],
-                padding: const EdgeInsets.only(top: 7, bottom: 7),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    side: const BorderSide(
-                      color: Color.fromRGBO(255, 167, 38, 1),
-                    )),
+      body: SingleChildScrollView(
+        child: Column(children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              margin: const EdgeInsets.only(
+                top: 10,
+                bottom: 10,
+                right: 5,
+                left: 10,
               ),
               child: const Text(
-                '登録する',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xffFAFAFA),
-                ),
+                '目標',
               ),
-              onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
-              },
             ),
           ),
-        ),
-      ]),
+          Container(
+            color: Colors.white,
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  '現在体重',
+                ),
+                Row(
+                  children: const [
+                    SizedBox(
+                      width: 75,
+                      child: TextField(
+                        textAlign: TextAlign.right,
+                        textInputAction: TextInputAction.next,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "未設定",
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      'kg',
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  '目標体重',
+                ),
+                Row(
+                  children: const [
+                    SizedBox(
+                      width: 75,
+                      child: TextField(
+                        textAlign: TextAlign.right,
+                        textInputAction: TextInputAction.next,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "未設定",
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      'kg',
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              margin: const EdgeInsets.only(
+                top: 10,
+                bottom: 10,
+                right: 5,
+                left: 10,
+              ),
+              child: const Text(
+                '栄養素の目標設定',
+              ),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            color: Colors.white,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      '目標カロリー',
+                    ),
+                    Row(
+                      children: const [
+                        SizedBox(
+                          width: 75,
+                          child: TextField(
+                            textAlign: TextAlign.right,
+                            textInputAction: TextInputAction.next,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "2900",
+                              hintStyle: TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          'kcal',
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            color: Colors.white,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'タンパク質',
+                    ),
+                    // 青い文字押したらピッカー表示（どこ押しても可能)
+                    Row(
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            _cupertinoPicker();
+                          },
+                          child: Text('$selectNumbar%'),
+                        ),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        const Text(
+                          '81',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        const Text(
+                          'kg',
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            color: Colors.white,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      '脂質',
+                    ),
+                    // 青い文字押したらピッカー表示（どこ押しても可能)
+                    Row(
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            _cupertinoPicker();
+                          },
+                          child: Text('$selectNumbar2%'),
+                        ),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        const Text(
+                          '81',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        const Text(
+                          'kg',
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+            color: Colors.white,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      '炭水化物',
+                    ),
+                    // 青い文字押したらピッカー表示（どこ押しても可能)
+                    Row(
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            _cupertinoPicker();
+                          },
+                          child: Text('$selectNumbar3%'),
+                        ),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        const Text(
+                          '81',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        const Text(
+                          'kg',
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 40.0, left: 40.0, top: 40),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(minWidth: double.infinity),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.orange[400],
+                  padding: const EdgeInsets.only(top: 7, bottom: 7),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      side: const BorderSide(
+                        color: Color.fromRGBO(255, 167, 38, 1),
+                      )),
+                ),
+                child: const Text(
+                  '登録する',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xffFAFAFA),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Home()));
+                },
+              ),
+            ),
+          ),
+        ]),
+      ),
     );
   }
 }

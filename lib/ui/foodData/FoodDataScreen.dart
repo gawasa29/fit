@@ -1,4 +1,4 @@
-import 'package:fit/ui/add_page/MyFood.dart';
+import 'package:fit/ui/add_page/myFood/MyFoodScreen.dart';
 import 'package:flutter/material.dart';
 
 class FoodData extends StatefulWidget {
