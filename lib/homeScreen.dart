@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
         //設定画面未定なので放置
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () async {},
             icon: const Icon(
               Icons.settings,
               color: Colors.black87,

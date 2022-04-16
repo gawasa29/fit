@@ -1,9 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:fit/homeScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 //現時点では目標設定画面
-void main() {
+Future<void> main() async {
+  //おまじない
+  WidgetsFlutterBinding.ensureInitialized();
+  //ファイアベースコアの初期化
+  await Firebase.initializeApp();
   return runApp(MyApp());
 }
 
@@ -15,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Radial Gauge Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
@@ -518,8 +523,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Home()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Home()));
                 },
               ),
             ),
