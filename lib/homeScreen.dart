@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
-import 'package:fit/ui/Billing/BillingScreen.dart';
 import 'package:fit/ui/calendar/CalendarScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -73,7 +72,7 @@ class _HomeState extends State<Home> {
           children: [
             const calendar(),
             glaf(progressValue: progressValue),
-            const Billing(),
+
             //↓分けられへんかったからこのまま
             Container(
               margin: const EdgeInsets.only(top: 10, left: 5, right: 5),
