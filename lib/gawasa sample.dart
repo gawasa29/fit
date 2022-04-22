@@ -1,4 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fit/model/User.dart';
+import 'package:fit/services/FirebaseHelper.dart';
 import 'package:flutter/material.dart';
 
 class gawasasample extends StatefulWidget {
@@ -9,6 +10,8 @@ class gawasasample extends StatefulWidget {
 }
 
 class _gawasasampleState extends State<gawasasample> {
+  @override
+  User user = User();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,19 +31,23 @@ class _gawasasampleState extends State<gawasasample> {
             children: <Widget>[
               const Text("このページはgawasaのお試しようページです"),
               ElevatedButton(
+                child: const Text('体重変数に値を追加ボタン'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.orange,
+                  onPrimary: Colors.white,
+                ),
+                onPressed: () {
+                  user.weight = 100;
+                },
+              ),
+              ElevatedButton(
                 child: const Text('Button'),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.orange,
                   onPrimary: Colors.white,
                 ),
                 onPressed: () async {
-                  Map<String, dynamic> demo = <String, dynamic>{
-                    'お試しデータ': "test",
-                  };
-                  await FirebaseFirestore.instance
-                      .collection("users")
-                      .doc()
-                      .set(demo);
+                  await FireStoreUtils.updateCurrentUser(user);
                 },
               ),
             ],
