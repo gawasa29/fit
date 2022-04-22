@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fit/gawasa%20sample.dart';
 import 'package:fit/homeScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -528,6 +529,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
             ),
+          ),
+          ElevatedButton(
+            child: const Text('gawasa sample'),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.orange,
+              onPrimary: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const gawasasample()),
+              );
+            },
           ),
         ]),
       ),
