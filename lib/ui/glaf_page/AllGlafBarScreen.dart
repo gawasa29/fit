@@ -1,8 +1,8 @@
+import 'package:fit/model/GlafData.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
-import '../model/GlafData.dart';
 import 'nutrition/Calcium.dart';
 import 'nutrition/Cholesterol.dart';
 import 'nutrition/DietaryFiber.dart';

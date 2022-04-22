@@ -1,9 +1,9 @@
+import 'package:fit/model/GlafData.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import 'AllGlafBarScreen.dart';
-import '../model/GlafData.dart';
 
 ////////////////////////////////////////////////////////////////////////
 ///////////////////////////Home画面のグラフ///////////////////////////////

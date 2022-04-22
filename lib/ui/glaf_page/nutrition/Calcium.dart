@@ -1,7 +1,6 @@
+import 'package:fit/model/GlafData.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-
-import '../../model/GlafData.dart';
 
 class Calcium extends StatelessWidget {
   const Calcium({
