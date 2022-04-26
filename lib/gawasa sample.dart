@@ -13,11 +13,7 @@ class gawasasample extends StatefulWidget {
 class _gawasasampleState extends State<gawasasample> {
   @override
   User user = User();
-  final Stream<DocumentSnapshot<Map<String, dynamic>>> _usersStream =
-      FirebaseFirestore.instance
-          .collection('users')
-          .doc('4Ia3POTK9YKgT6u16lX6')
-          .snapshots();
+  FireStoreUtils fireStoreUtils = FireStoreUtils();
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +44,7 @@ class _gawasasampleState extends State<gawasasample> {
                 },
               ),
               ElevatedButton(
-                child: const Text('Button'),
+                child: const Text('値をfirebaseに追加'),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.orange,
                   onPrimary: Colors.white,
@@ -58,7 +54,7 @@ class _gawasasampleState extends State<gawasasample> {
                 },
               ),
               StreamBuilder<DocumentSnapshot>(
-                  stream: _usersStream,
+                  stream: fireStoreUtils.usersStream,
                   builder: (BuildContext context,
                       AsyncSnapshot<DocumentSnapshot> snapshot) {
                     if (snapshot.hasData) {
