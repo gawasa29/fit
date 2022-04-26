@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fit/gawasa%20sample.dart';
 import 'package:fit/homeScreen.dart';
+import 'package:fit/model/User.dart';
+import 'package:fit/services/FirebaseHelper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -39,6 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final numbars = List<String>.generate(100, (index) => '$index');
+    User user = User();
 
 // Pickerで選択したアイテムが代入される予定
     String selectNumbar = '20';
@@ -273,22 +276,26 @@ class _MyHomePageState extends State<MyHomePage> {
                   '現在体重',
                 ),
                 Row(
-                  children: const [
+                  children: [
                     SizedBox(
                       width: 75,
                       child: TextField(
                         textAlign: TextAlign.right,
                         textInputAction: TextInputAction.next,
-                        decoration: InputDecoration(
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: "未設定",
                         ),
+                        onChanged: (text) {
+                          user.weight = text;
+                        },
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
-                    Text(
+                    const Text(
                       'kg',
                     ),
                   ],
@@ -312,6 +319,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: TextField(
                         textAlign: TextAlign.right,
                         textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: "未設定",
@@ -541,6 +549,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 context,
                 MaterialPageRoute(builder: (context) => const gawasasample()),
               );
+            },
+          ),
+          ElevatedButton(
+            child: const Text('値をfirebaseに追加ボタン'),
+            style: ElevatedButton.styleFrom(
+                primary: Colors.orange, onPrimary: Colors.white),
+            onPressed: () async {
+              await FireStoreUtils.updateCurrentUser(user);
             },
           ),
         ]),

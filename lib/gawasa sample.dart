@@ -44,7 +44,7 @@ class _gawasasampleState extends State<gawasasample> {
                   onPrimary: Colors.white,
                 ),
                 onPressed: () {
-                  user.weight = 40;
+                  user.weight = 1000.toString();
                 },
               ),
               ElevatedButton(

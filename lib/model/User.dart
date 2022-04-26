@@ -1,5 +1,5 @@
 class User {
-  int? weight;
+  String? weight;
 
   User({this.weight});
 
