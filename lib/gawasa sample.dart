@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fit/model/User.dart';
 import 'package:fit/services/FirebaseHelper.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,12 @@ class gawasasample extends StatefulWidget {
 class _gawasasampleState extends State<gawasasample> {
   @override
   User user = User();
+  final Stream<DocumentSnapshot<Map<String, dynamic>>> _usersStream =
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc('4Ia3POTK9YKgT6u16lX6')
+          .snapshots();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +44,7 @@ class _gawasasampleState extends State<gawasasample> {
                   onPrimary: Colors.white,
                 ),
                 onPressed: () {
-                  user.weight = 100;
+                  user.weight = 40;
                 },
               ),
               ElevatedButton(
@@ -50,6 +57,16 @@ class _gawasasampleState extends State<gawasasample> {
                   await FireStoreUtils.updateCurrentUser(user);
                 },
               ),
+              StreamBuilder<DocumentSnapshot>(
+                  stream: _usersStream,
+                  builder: (BuildContext context,
+                      AsyncSnapshot<DocumentSnapshot> snapshot) {
+                    if (snapshot.hasData) {
+                      return Text(snapshot.data!['weight'].toString());
+                    } else {
+                      return Container();
+                    }
+                  })
             ],
           ),
         ));
