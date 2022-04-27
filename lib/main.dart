@@ -287,8 +287,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           border: InputBorder.none,
                           hintText: "未設定",
                         ),
-                        onChanged: (text) {
-                          user.weight = text;
+                        onChanged: (value) {
+                          user.weight = value;
                         },
                       ),
                     ),
@@ -313,23 +313,26 @@ class _MyHomePageState extends State<MyHomePage> {
                   '目標体重',
                 ),
                 Row(
-                  children: const [
+                  children: [
                     SizedBox(
                       width: 75,
                       child: TextField(
                         textAlign: TextAlign.right,
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: "未設定",
                         ),
+                        onSubmitted: (value) {
+                          user.targetWeight = value;
+                        },
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
-                    Text(
+                    const Text(
                       'kg',
                     ),
                   ],
@@ -363,23 +366,27 @@ class _MyHomePageState extends State<MyHomePage> {
                       '目標カロリー',
                     ),
                     Row(
-                      children: const [
+                      children: [
                         SizedBox(
                           width: 75,
                           child: TextField(
                             textAlign: TextAlign.right,
                             textInputAction: TextInputAction.next,
-                            decoration: InputDecoration(
+                            keyboardType: TextInputType.number,
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               hintText: "2900",
                               hintStyle: TextStyle(color: Colors.blue),
                             ),
+                            onSubmitted: (value) {
+                              user.everydayCalories = value;
+                            },
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
-                        Text(
+                        const Text(
                           'kcal',
                         ),
                       ],
