@@ -6,6 +6,9 @@ import 'package:fit/services/FirebaseHelper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+String selectNumbar = '20';
+String selectNumbar2 = '50';
+String selectNumbar3 = '50';
 //現時点では目標設定画面
 Future<void> main() async {
   //おまじない
@@ -42,11 +45,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final numbars = List<String>.generate(100, (index) => '$index');
     User user = User();
+    void initState() {
+      // Pickerで選択したアイテムが代入される予定
 
-// Pickerで選択したアイテムが代入される予定
-    String selectNumbar = '20';
-    String selectNumbar2 = '50';
-    String selectNumbar3 = '50';
+      super.initState();
+    }
+
     void _cupertinoPicker() {
       showCupertinoModalPopup(
           context: context,
@@ -89,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Material(
                               color: Colors.white,
                               child: Text(
-                                '50g',
+                                '0g',
                                 style: TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
@@ -564,6 +568,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 primary: Colors.orange, onPrimary: Colors.white),
             onPressed: () async {
               await FireStoreUtils.updateCurrentUser(user);
+            },
+          ),
+          ElevatedButton(
+            child: const Text('PFCbotan'),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.orange,
+              onPrimary: Colors.white,
+            ),
+            onPressed: () {
+              print(selectNumbar);
+              print(selectNumbar2);
+              print(selectNumbar3);
             },
           ),
         ]),
