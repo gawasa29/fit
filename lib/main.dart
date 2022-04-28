@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 String selectNumbar = '20';
 String selectNumbar2 = '50';
 String selectNumbar3 = '50';
+
 //現時点では目標設定画面
 Future<void> main() async {
   //おまじない
@@ -45,11 +46,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final numbars = List<String>.generate(100, (index) => '$index');
     User user = User();
-    void initState() {
-      // Pickerで選択したアイテムが代入される予定
-
-      super.initState();
-    }
+    int allNumbar = int.parse(selectNumbar) +
+        int.parse(selectNumbar2) +
+        int.parse(selectNumbar3);
+    String viewNumbar = allNumbar.toString();
 
     void _cupertinoPicker() {
       showCupertinoModalPopup(
@@ -217,7 +217,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 15)),
                           TextSpan(
-                              text: ' 100%',
+                              //TODO:リアルタイム数字変換
+                              text: '$viewNumbar%',
                               style: TextStyle(
                                   color: Colors.orange[400],
                                   fontWeight: FontWeight.bold,
