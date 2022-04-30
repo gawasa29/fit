@@ -3,12 +3,13 @@ import 'package:fit/gawasa%20sample.dart';
 import 'package:fit/homeScreen.dart';
 import 'package:fit/model/User.dart';
 import 'package:fit/services/FirebaseHelper.dart';
+import 'package:fit/services/helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-String selectNumbar = '20';
-String selectNumbar2 = '50';
-String selectNumbar3 = '50';
+String proteinselectNumbar = '20';
+String fatSelectNumbar = '50';
+String carbosSelectNumbar = '50';
 
 //現時点では目標設定画面
 Future<void> main() async {
@@ -46,10 +47,20 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final numbars = List<String>.generate(100, (index) => '$index');
     User user = User();
-    int allNumbar = int.parse(selectNumbar) +
-        int.parse(selectNumbar2) +
-        int.parse(selectNumbar3);
+    dynamic calorie = "";
+    void initState() {
+      //シングルトンクラス呼び出し
+      calorie = PFC.instance.totalCalorie(
+          proteinselectNumbar, fatSelectNumbar, carbosSelectNumbar);
+
+      super.initState();
+    }
+
+    int allNumbar = int.parse(proteinselectNumbar) +
+        int.parse(fatSelectNumbar) +
+        int.parse(carbosSelectNumbar);
     String viewNumbar = allNumbar.toString();
+    //TODO:リアルタイム更新が難しいのと計算式がむずい。
 
     void _cupertinoPicker() {
       showCupertinoModalPopup(
@@ -79,8 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Column(
-                          children: const [
-                            Material(
+                          children: [
+                            const Material(
                               color: Colors.white,
                               child: Text(
                                 'タンパク質',
@@ -93,8 +104,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             Material(
                               color: Colors.white,
                               child: Text(
-                                '0g',
-                                style: TextStyle(
+                                '$proteinselectNumbar%',
+                                style: const TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black87),
@@ -103,8 +114,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         Column(
-                          children: const [
-                            Material(
+                          children: [
+                            const Material(
                               color: Colors.white,
                               child: Text(
                                 '脂質',
@@ -117,8 +128,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             Material(
                               color: Colors.white,
                               child: Text(
-                                '50g',
-                                style: TextStyle(
+                                '$fatSelectNumbar%',
+                                style: const TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black87),
@@ -127,8 +138,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                         Column(
-                          children: const [
-                            Material(
+                          children: [
+                            const Material(
                               color: Colors.white,
                               child: Text(
                                 '炭水化物',
@@ -141,8 +152,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             Material(
                               color: Colors.white,
                               child: Text(
-                                '50g',
-                                style: TextStyle(
+                                '$carbosSelectNumbar%',
+                                style: const TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black87),
@@ -164,9 +175,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               scrollController:
                                   FixedExtentScrollController(initialItem: 50),
                               onSelectedItemChanged: (index) {
-                                setState(() {
-                                  selectNumbar = numbars[index];
-                                });
+                                proteinselectNumbar = numbars[index];
+                                setState(() {});
                               },
                               children: numbars
                                   .map((numbar) => Text(numbar))
@@ -179,9 +189,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               scrollController:
                                   FixedExtentScrollController(initialItem: 50),
                               onSelectedItemChanged: (index) {
-                                setState(() {
-                                  selectNumbar2 = numbars[index];
-                                });
+                                fatSelectNumbar = numbars[index];
+                                setState(() {});
                               },
                               children: numbars
                                   .map((numbar) => Text(numbar))
@@ -194,9 +203,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               scrollController:
                                   FixedExtentScrollController(initialItem: 50),
                               onSelectedItemChanged: (index) {
-                                setState(() {
-                                  selectNumbar3 = numbars[index];
-                                });
+                                carbosSelectNumbar = numbars[index];
+                                setState(() {});
                               },
                               children: numbars
                                   .map((numbar) => Text(numbar))
@@ -380,7 +388,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             keyboardType: TextInputType.number,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
-                              hintText: "2900",
+                              hintText: "2500",
                               hintStyle: TextStyle(color: Colors.blue),
                             ),
                             onSubmitted: (value) {
@@ -419,7 +427,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           onPressed: () {
                             _cupertinoPicker();
                           },
-                          child: Text('$selectNumbar%'),
+                          child: Text('$proteinselectNumbar%'),
                         ),
                         const SizedBox(
                           width: 15,
@@ -459,7 +467,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           onPressed: () {
                             _cupertinoPicker();
                           },
-                          child: Text('$selectNumbar2%'),
+                          child: Text('$fatSelectNumbar%'),
                         ),
                         const SizedBox(
                           width: 15,
@@ -499,7 +507,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           onPressed: () {
                             _cupertinoPicker();
                           },
-                          child: Text('$selectNumbar3%'),
+                          child: Text('$carbosSelectNumbar%'),
                         ),
                         const SizedBox(
                           width: 15,
@@ -553,7 +561,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ElevatedButton(
             child: const Text('gawasa sample'),
             style: ElevatedButton.styleFrom(
-              primary: Colors.orange,
+              primary: Colors.black,
               onPrimary: Colors.white,
             ),
             onPressed: () {
@@ -566,21 +574,20 @@ class _MyHomePageState extends State<MyHomePage> {
           ElevatedButton(
             child: const Text('値をfirebaseに追加ボタン'),
             style: ElevatedButton.styleFrom(
-                primary: Colors.orange, onPrimary: Colors.white),
+                primary: Colors.black, onPrimary: Colors.white),
             onPressed: () async {
               await FireStoreUtils.updateCurrentUser(user);
             },
           ),
           ElevatedButton(
-            child: const Text('PFCbotan'),
+            child: const Text('PFC確認botan'),
             style: ElevatedButton.styleFrom(
-              primary: Colors.orange,
+              primary: Colors.black,
               onPrimary: Colors.white,
             ),
             onPressed: () {
-              print(selectNumbar);
-              print(selectNumbar2);
-              print(selectNumbar3);
+              PFC.instance.totalCalorie(
+                  proteinselectNumbar, fatSelectNumbar, carbosSelectNumbar);
             },
           ),
         ]),
