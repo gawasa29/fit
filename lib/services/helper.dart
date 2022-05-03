@@ -9,56 +9,33 @@ class PFC {
   int fat = 9;
   int carbo = 4;
 
-  //入力された各PFCグラムの値を計算して％を参照する関数
-  totalCalorie(p, f, c) {
-    //グラムからカロリーに変換
-    int calorieProtein = int.parse(p) * protein;
-    int calorieFat = int.parse(f) * fat;
-    int calorieCarbo = int.parse(c) * carbo;
+  caloriesTograms(calorie, p, f, c) {
+    Map pfcGrams = {};
 
-    int totalcalorie = calorieProtein + calorieFat + calorieCarbo;
-    // ignore: avoid_print
-    print(totalcalorie);
-    return totalcalorie;
-  }
+    //少数に戻す
+    num proteinRate = int.parse(p) / 100;
+    //プロテインのカロリーを割り出す
+    num proteinCalori = int.parse(calorie) * proteinRate;
+    //カロリーからグラムを割り出す
+    num proteinGram = proteinCalori / protein;
+    print("$calorie,kcal中の$p％のプロテインは$proteinGram,gです");
 
-  proteinPercent(p, f, c) {
-    int calorieProtein = int.parse(p) * protein;
-    int calorieFat = int.parse(f) * fat;
-    int calorieCarbo = int.parse(c) * carbo;
+    num fatRate = int.parse(f) / 100;
+    num fatCalori = int.parse(calorie) * fatRate;
+    num fatGram = fatCalori / fat;
+    print("$calorie,kcal中の$f％の脂質は$fatGram,gです");
 
-    int totalcalorie = calorieProtein + calorieFat + calorieCarbo;
-    calorieProtein = int.parse(p) * protein;
-    num rate1 = calorieProtein / totalcalorie;
-    //％を計算
-    num percent1 = rate1 * 100;
-    //四捨五入
-    int proteinPercent = percent1.round();
-    return proteinPercent;
-  }
+    num carboRate = int.parse(c) / 100;
+    num carboCalori = int.parse(calorie) * carboRate;
+    num carboGram = carboCalori / carbo;
+    print("$calorie,kcal中の$c％の炭水化物は$carboGram,gです");
 
-  fatPercent(p, f, c) {
-    int calorieProtein = int.parse(p) * protein;
-    int calorieFat = int.parse(f) * fat;
-    int calorieCarbo = int.parse(c) * carbo;
+//mapに値を追加する and .round()で四捨五入
+    pfcGrams['proteinGram'] = proteinGram.round();
+    pfcGrams["fatGram"] = fatGram.round();
+    pfcGrams["carboGram"] = carboGram.round();
+    print(pfcGrams);
 
-    int totalcalorie = calorieProtein + calorieFat + calorieCarbo;
-
-    num rate2 = calorieFat / totalcalorie;
-    num percent2 = rate2 * 100;
-    int fatPercent = percent2.round();
-    return fatPercent;
-  }
-
-  carboPercent(p, f, c) {
-    int calorieProtein = int.parse(p) * protein;
-    int calorieFat = int.parse(f) * fat;
-    int calorieCarbo = int.parse(c) * carbo;
-
-    int totalcalorie = calorieProtein + calorieFat + calorieCarbo;
-    num rate3 = calorieCarbo / totalcalorie;
-    num percent3 = rate3 * 100;
-    int carboPercent = percent3.round();
-    return carboPercent;
+    return pfcGrams;
   }
 }

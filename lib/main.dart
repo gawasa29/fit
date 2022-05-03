@@ -47,20 +47,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final numbars = List<String>.generate(100, (index) => '$index');
     User user = User();
-    dynamic calorie = "";
-    void initState() {
-      //シングルトンクラス呼び出し
-      calorie = PFC.instance.totalCalorie(
-          proteinselectNumbar, fatSelectNumbar, carbosSelectNumbar);
-
-      super.initState();
-    }
+    FireStoreUtils fireStoreUtils = FireStoreUtils();
+    dynamic pfc;
 
     int allNumbar = int.parse(proteinselectNumbar) +
         int.parse(fatSelectNumbar) +
         int.parse(carbosSelectNumbar);
     String viewNumbar = allNumbar.toString();
-    //TODO:リアルタイム更新が難しいのと計算式がむずい。
+    initState() async {
+      super.initState();
+    }
 
     void _cupertinoPicker() {
       showCupertinoModalPopup(
@@ -585,13 +581,50 @@ class _MyHomePageState extends State<MyHomePage> {
               primary: Colors.black,
               onPrimary: Colors.white,
             ),
-            onPressed: () {
-              PFC.instance.totalCalorie(
+            onPressed: () async {
+              User? userget = await FireStoreUtils.getCurrentUser();
+              pfc = PFC.instance.caloriesTograms(userget!.everydayCalories,
                   proteinselectNumbar, fatSelectNumbar, carbosSelectNumbar);
+            },
+          ),
+          ElevatedButton(
+            child: const Text('Button'),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.orange,
+              onPrimary: Colors.white,
+            ),
+            onPressed: () async {
+              User? userget = await FireStoreUtils.getCurrentUser();
+              checkType(proteinselectNumbar);
+              checkType(fatSelectNumbar);
+              checkType(carbosSelectNumbar);
+              checkType(user.everydayCalories);
+              print(userget?.everydayCalories);
             },
           ),
         ]),
       ),
     );
+  }
+}
+
+void checkType(value) {
+  print(value);
+  if (value is String) {
+    print('型はStringです');
+  } else if (value is int) {
+    print("型はintです");
+  } else if (value is double) {
+    print("型はdoubleです");
+  } else if (value is bool) {
+    print("型はboolです");
+  } else if (value is DateTime) {
+    print("型はDateTimeです");
+  } else if (value is List) {
+    print("型はListです");
+  } else if (value is Map) {
+    print("型はMapです");
+  } else {
+    print("ここでは定義されていない型です");
   }
 }
