@@ -1,5 +1,6 @@
-import 'package:fit/main.dart';
 import 'package:flutter/material.dart';
+
+import '../../targetPreferenc_pege/TargetPreferencScreen.dart';
 
 class AddFoodData extends StatefulWidget {
   const AddFoodData({Key? key}) : super(key: key);
@@ -30,8 +31,10 @@ class _AddFoodDataState extends State<AddFoodData> {
           actions: [
             IconButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MyHomePage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TargetPreferenceScreen()));
               },
               icon: const Icon(
                 Icons.done,
@@ -251,14 +254,14 @@ class _AddFoodDataState extends State<AddFoodData> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       primary: Colors.orange[400],
-                      padding: EdgeInsets.only(top: 7, bottom: 7),
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          side: BorderSide(
+                          side: const BorderSide(
                             color: Color.fromRGBO(255, 167, 38, 1),
                           )),
                     ),
-                    child: Text(
+                    child: const Text(
                       '登録する',
                       style: TextStyle(
                         fontSize: 15,
@@ -270,7 +273,8 @@ class _AddFoodDataState extends State<AddFoodData> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => MyHomePage()));
+                              builder: (context) =>
+                                  const TargetPreferenceScreen()));
                     },
                   ),
                 ),
@@ -419,17 +423,17 @@ class _AddFoodDataState extends State<AddFoodData> {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Container(
-          padding:
-              EdgeInsets.only(top: 4.0, left: 0.0, right: 0.0, bottom: 6.0),
+          padding: const EdgeInsets.only(
+              top: 4.0, left: 0.0, right: 0.0, bottom: 6.0),
           child: Container(
             child: Center(
               child: Column(
                 children: <Widget>[
-                  SizedBox(
+                  const SizedBox(
                     height: 4.0,
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 10.0, right: 10.0),
+                    margin: const EdgeInsets.only(left: 10.0, right: 10.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
@@ -437,13 +441,13 @@ class _AddFoodDataState extends State<AddFoodData> {
                           splashColor: Colors.blue[100],
                           onTap: () {},
                           child: Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 25.0),
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.black87),
                               color: Colors.white,
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(48.0)),
+                                  const BorderRadius.all(Radius.circular(48.0)),
                             ),
                             child: Text(
                               '50%',
@@ -454,20 +458,20 @@ class _AddFoodDataState extends State<AddFoodData> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 2.0,
                         ),
                         InkWell(
                           splashColor: Colors.blue[100],
                           onTap: () {},
                           child: Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 25.0),
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.black87),
                               color: Colors.white,
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(48.0)),
+                                  const BorderRadius.all(Radius.circular(48.0)),
                             ),
                             child: Text(
                               '100%',
@@ -478,20 +482,20 @@ class _AddFoodDataState extends State<AddFoodData> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 2.0,
                         ),
                         InkWell(
                           splashColor: Colors.blue[100],
                           onTap: () {},
                           child: Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 25.0),
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.black87),
                               color: Colors.white,
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(48.0)),
+                                  const BorderRadius.all(Radius.circular(48.0)),
                             ),
                             child: Text(
                               '200%',
@@ -502,20 +506,20 @@ class _AddFoodDataState extends State<AddFoodData> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 2.0,
                         ),
                         InkWell(
                           splashColor: Colors.blue[100],
                           onTap: () {},
                           child: Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 8.0, horizontal: 25.0),
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.black87),
                               color: Colors.white,
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(48.0)),
+                                  const BorderRadius.all(Radius.circular(48.0)),
                             ),
                             child: Text(
                               'カスタム',
@@ -529,7 +533,7 @@ class _AddFoodDataState extends State<AddFoodData> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 6.0,
                   )
                 ],

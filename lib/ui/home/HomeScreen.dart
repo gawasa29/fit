@@ -6,26 +6,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'ui/add_page/AddPageScreen.dart';
-import 'ui/glaf_page/GlafScreen.dart';
-import 'ui/tab_page/DinnerTab.dart';
-import 'ui/tab_page/LunchTab.dart';
-import 'ui/tab_page/MorningTab.dart';
-import 'ui/tab_page/SnackTab.dart';
+import '../add_page/AddPageScreen.dart';
+import '../glaf_page/GlafScreen.dart';
+import '../tab_page/DinnerTab.dart';
+import '../tab_page/LunchTab.dart';
+import '../tab_page/MorningTab.dart';
+import '../tab_page/SnackTab.dart';
 
 ////////////////////////////////////////////////////////////////////////
-//////////////////////////////Home画面//////////////////////////////////
+//////////////////////////////HomeScreen画面//////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
-/// Represents Home class
-class Home extends StatefulWidget {
-  /// Creates the instance of Home
-  const Home({Key? key}) : super(key: key);
+/// Represents HomeScreen class
+class HomeScreen extends StatefulWidget {
+  /// Creates the instance of HomeScreen
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeScreenState extends State<HomeScreen> {
   late Timer _timer;
   double progressValue = 0;
   double secondaryProgressValue = 0;

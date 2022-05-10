@@ -1,40 +1,41 @@
 {
   "project_info": {
-    "project_number": "410526087309",
-    "project_id": "fir-example-ae7d6",
-    "storage_bucket": "fir-example-ae7d6.appspot.com"
+    "project_number": "549876225843",
+    "firebase_url": "https://phonsample-default-rtdb.firebaseio.com",
+    "project_id": "phonsample",
+    "storage_bucket": "phonsample.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:410526087309:android:8c293b8e2398e178838ac4",
+        "mobilesdk_app_id": "1:549876225843:android:d1b608e63a9aa095a1d046",
         "android_client_info": {
-          "package_name": "com.example.fit"
+          "package_name": "com.example.my_test"
         }
       },
       "oauth_client": [
         {
-          "client_id": "410526087309-nonjj5gjt1j5secj5gkn8r0o8gu6nokq.apps.googleusercontent.com",
+          "client_id": "549876225843-o6b0cvddg7a69oa0t44ao7apsr87ukfb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAPBo6EQ6zQouQyoz0zVUIe2Z_8Sf51Ln8"
+          "current_key": "AIzaSyB5nWuBiljGvPYjLwFXwFiYYtTY5ixjCrg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "410526087309-nonjj5gjt1j5secj5gkn8r0o8gu6nokq.apps.googleusercontent.com",
+              "client_id": "549876225843-o6b0cvddg7a69oa0t44ao7apsr87ukfb.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "410526087309-d458puggs8il1o6mu40sj1qli6s3kmec.apps.googleusercontent.com",
+              "client_id": "549876225843-084qu0crt8pps8adg791r3pdu61tqhhm.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.fit"
+                "bundle_id": "com.instaflutter.dating.ios"
               }
             }
           ]

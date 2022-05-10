@@ -1,5 +1,4 @@
-import 'package:fit/homeScreen.dart';
-import 'package:fit/main.dart';
+import 'package:fit/ui/home/HomeScreen.dart';
 import 'package:flutter/material.dart';
 
 ////////////////////////////////////////////////////////////////////////
@@ -33,7 +32,9 @@ class _MyFoodState extends State<MyFood> {
             IconButton(
               onPressed: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const HomeScreen()));
               },
               icon: const Icon(
                 Icons.done,
@@ -65,7 +66,7 @@ class _MyFoodState extends State<MyFood> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           '名前',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 17),
@@ -102,7 +103,7 @@ class _MyFoodState extends State<MyFood> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             'カロリー',
                           ),
                           Row(
@@ -142,7 +143,7 @@ class _MyFoodState extends State<MyFood> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('タンパク質'),
+                          const Text('タンパク質'),
                           Container(
                             margin: const EdgeInsets.only(right: 20),
                             child: Row(
@@ -183,7 +184,7 @@ class _MyFoodState extends State<MyFood> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('脂肪'),
+                          const Text('脂肪'),
                           Container(
                             margin: const EdgeInsets.only(right: 20),
                             child: Row(
@@ -224,7 +225,7 @@ class _MyFoodState extends State<MyFood> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('炭水化物'),
+                          const Text('炭水化物'),
                           Container(
                             margin: const EdgeInsets.only(right: 20),
                             child: Row(
@@ -262,7 +263,7 @@ class _MyFoodState extends State<MyFood> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('ー 糖質'),
+                                const Text('ー 糖質'),
                                 Container(
                                   margin: const EdgeInsets.only(right: 20),
                                   child: Row(
@@ -293,7 +294,7 @@ class _MyFoodState extends State<MyFood> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('ー 食物繊維'),
+                                const Text('ー 食物繊維'),
                                 Container(
                                   margin:
                                       const EdgeInsets.only(top: 10, right: 20),
@@ -358,14 +359,14 @@ class _MyFoodState extends State<MyFood> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: Colors.orange[400],
-                    padding: EdgeInsets.only(top: 7, bottom: 7),
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                        side: BorderSide(
+                        side: const BorderSide(
                           color: Color.fromRGBO(255, 167, 38, 1),
                         )),
                   ),
-                  child: Text(
+                  child: const Text(
                     '登録する',
                     style: TextStyle(
                       fontSize: 15,
@@ -374,8 +375,10 @@ class _MyFoodState extends State<MyFood> {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Home()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()));
                   },
                 ),
               ),
@@ -405,7 +408,7 @@ class _MyFoodState extends State<MyFood> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('カルシウム'),
+                        const Text('カルシウム'),
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
@@ -442,7 +445,7 @@ class _MyFoodState extends State<MyFood> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('ビタミンA'),
+                        const Text('ビタミンA'),
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
@@ -479,7 +482,7 @@ class _MyFoodState extends State<MyFood> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('ビタミンC'),
+                        const Text('ビタミンC'),
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
@@ -516,7 +519,7 @@ class _MyFoodState extends State<MyFood> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('鉄分'),
+                        const Text('鉄分'),
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
@@ -553,7 +556,7 @@ class _MyFoodState extends State<MyFood> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('コレステロール'),
+                        const Text('コレステロール'),
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
@@ -590,7 +593,7 @@ class _MyFoodState extends State<MyFood> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('ナトリウム'),
+                        const Text('ナトリウム'),
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
@@ -627,7 +630,7 @@ class _MyFoodState extends State<MyFood> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('カリウム'),
+                        const Text('カリウム'),
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
