@@ -1,3 +1,8 @@
+# 命令規則
+
+###UI
+UIに関連するファイルとクラス名はLoginScreen,SingUpScreenのように各単語の始まりは大文字にするそして最後にScreenを必ずつける
+
 # アーキテクチャー
 
 ### model
