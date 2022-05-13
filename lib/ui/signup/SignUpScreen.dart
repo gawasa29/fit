@@ -1,6 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../targetPreferenc_pege/TargetPreferencScreen.dart';
+import '../emailcheck/EmailCheckScreen.dart';
+
+// 入力されたメールアドレス
+String newUserEmail = "";
+// 入力されたパスワード
+String newUserPassword = "";
+// 登録・ログインに関する情報を表示
+String infoText = "";
 
 class SingUpScreen extends StatefulWidget {
   const SingUpScreen({Key? key}) : super(key: key);
@@ -46,18 +54,17 @@ class _SingUpScreenState extends State<SingUpScreen> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               SizedBox(
                 width: 350,
                 height: 20,
-                child: TextField(
-                  textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color.fromRGBO(255, 167, 38, 1)),
-                    ),
-                  ),
+                child: TextFormField(
+                  decoration: const InputDecoration(labelText: "メールアドレス"),
+                  onChanged: (String value) {
+                    setState(() {
+                      newUserEmail = value;
+                    });
+                  },
                 ),
               ),
             ],
@@ -82,18 +89,19 @@ class _SingUpScreenState extends State<SingUpScreen> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               SizedBox(
                 width: 350,
                 height: 20,
-                child: TextField(
-                  textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color.fromRGBO(255, 167, 38, 1)),
-                    ),
-                  ),
+                child: TextFormField(
+                  decoration: const InputDecoration(labelText: "パスワード（６文字以上）"),
+                  // パスワードが見えないようにする
+                  obscureText: true,
+                  onChanged: (String value) {
+                    setState(() {
+                      newUserPassword = value;
+                    });
+                  },
                 ),
               ),
             ],
@@ -120,12 +128,35 @@ class _SingUpScreenState extends State<SingUpScreen> {
                   color: Color(0xffFAFAFA),
                 ),
               ),
-              onPressed: () {
-                Navigator.pushAndRemoveUntil(
+              onPressed: () async {
+                try {
+                  // メール/パスワードでユーザー登録
+                  final UserCredential result = await FirebaseAuth.instance
+                      .createUserWithEmailAndPassword(
+                    email: newUserEmail,
+                    password: newUserPassword,
+                  );
+                  //メール確認コード
+                  await FirebaseAuth.instance.currentUser!
+                      .sendEmailVerification();
+                  // 登録したユーザー情報
+                  final User user = result.user!;
+                  print(user);
+                  setState(() {
+                    infoText = "登録OK：${user.email}";
+                  });
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const TargetPreferenceScreen()),
-                    (_) => false);
+                        builder: (context) => const EmailCheckScreen()),
+                  );
+                } catch (e) {
+                  // 登録に失敗した場合
+                  print(e);
+                  setState(() {
+                    infoText = "失敗しました";
+                  });
+                }
               },
             ),
           ),

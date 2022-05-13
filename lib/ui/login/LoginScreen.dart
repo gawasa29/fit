@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../targetPreferenc_pege/TargetPreferencScreen.dart';
@@ -10,6 +11,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  // 入力されたメールアドレス
+  String loginUserEmail = "";
+  // 入力されたパスワード
+  String loginUserPassword = "";
+  // 登録・ログインに関する情報を表示
+  String logininfoText = "";
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -46,18 +53,18 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               SizedBox(
                 width: 350,
                 height: 20,
-                child: TextField(
-                  textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color.fromRGBO(255, 167, 38, 1)),
-                    ),
-                  ),
+                child: TextFormField(
+                  // テキスト入力のラベルを設定
+                  decoration: const InputDecoration(labelText: "メールアドレス"),
+                  onChanged: (String value) {
+                    setState(() {
+                      loginUserEmail = value;
+                    });
+                  },
                 ),
               ),
             ],
@@ -82,18 +89,18 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               SizedBox(
                 width: 350,
                 height: 20,
-                child: TextField(
-                  textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color.fromRGBO(255, 167, 38, 1)),
-                    ),
-                  ),
+                child: TextFormField(
+                  decoration: const InputDecoration(labelText: "パスワード（６文字以上）"),
+                  obscureText: true,
+                  onChanged: (String value) {
+                    setState(() {
+                      loginUserPassword = value;
+                    });
+                  },
                 ),
               ),
             ],
@@ -120,12 +127,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Color(0xffFAFAFA),
                 ),
               ),
-              onPressed: () {
-                Navigator.pushAndRemoveUntil(
+              onPressed: () async {
+                try {
+                  UserCredential userCredential = await FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
+                          email: loginUserEmail, password: loginUserPassword);
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const TargetPreferenceScreen()),
-                    (_) => false);
+                  );
+                } on FirebaseAuthException catch (e) {
+                  if (e.code == 'user-not-found') {
+                    print('No user found for that email.');
+                  } else if (e.code == 'wrong-password') {
+                    print('Wrong password provided for that user.');
+                  }
+                }
               },
             ),
           ),
