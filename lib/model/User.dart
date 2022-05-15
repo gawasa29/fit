@@ -1,14 +1,18 @@
-class User {
+import 'package:flutter/material.dart';
+
+class User with ChangeNotifier {
   String weight;
   String targetWeight;
   String height;
   String everydayCalories;
+  String userID;
 
   User({
     this.weight = "",
     this.targetWeight = "",
     this.height = "",
     this.everydayCalories = "",
+    this.userID = '',
   });
 
   //Firebaseからデータを取得する際の変換処理
@@ -18,6 +22,7 @@ class User {
           targetWeight: json['targetWeight'],
           height: json['height'],
           everydayCalories: json['everydayCalories'],
+          userID: json['userID'],
         );
 
   //DartのオブジェクトからFirebaseへ渡す際の変換処理
@@ -27,6 +32,7 @@ class User {
       'targetWeight': targetWeight,
       "height": height,
       "everydayCalories": everydayCalories,
+      'id': userID,
     };
   }
 }
