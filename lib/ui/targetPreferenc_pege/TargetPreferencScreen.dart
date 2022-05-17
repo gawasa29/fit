@@ -9,9 +9,9 @@ import 'package:provider/provider.dart';
 import '../../services/FirebaseHelper.dart';
 import '../home/HomeScreen.dart';
 
-String proteinselectNumbar = '20';
-String fatSelectNumbar = '50';
-String carbosSelectNumbar = '50';
+String proteinselectNumbar = '30';
+String fatSelectNumbar = '10';
+String carbosSelectNumbar = '60';
 
 class TargetPreferenceScreen extends StatefulWidget {
   /// Creates the instance of TargetPreferenceScreen
@@ -374,7 +374,7 @@ class _TargetPreferenceState extends State<TargetPreferenceScreen> {
                                       hintStyle: TextStyle(color: Colors.blue),
                                     ),
                                     onChanged: (text) {
-                                      currentUser.everydayCalories = text;
+                                      currentUser.targetCalories = text;
                                       setState(() {});
                                     },
                                   ),
@@ -538,6 +538,10 @@ class _TargetPreferenceState extends State<TargetPreferenceScreen> {
                           ),
                         ),
                         onPressed: () async {
+                          //TODOピッカーで選択した値をUserクラスに値を追加してfirestoreに追加
+                          currentUser.targetProtein = proteinselectNumbar;
+                          currentUser.targetFat = fatSelectNumbar;
+                          currentUser.targetCarbo = carbosSelectNumbar;
                           //UserModelのuserIDメンバ変数に現在ログインしているユーザーのUIDを代入
                           currentUser.userID =
                               auth.FirebaseAuth.instance.currentUser!.uid;
