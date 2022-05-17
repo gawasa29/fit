@@ -12,6 +12,7 @@ import '../home/HomeScreen.dart';
 String proteinselectNumbar = '30';
 String fatSelectNumbar = '10';
 String carbosSelectNumbar = '60';
+Map? pfcGram;
 
 class TargetPreferenceScreen extends StatefulWidget {
   /// Creates the instance of TargetPreferenceScreen
@@ -28,6 +29,7 @@ class _TargetPreferenceState extends State<TargetPreferenceScreen> {
   User? user;
 
   FireStoreUtils fireStoreUtils = FireStoreUtils();
+
   @override
   Widget build(BuildContext context) {
     final numbars = List<String>.generate(100, (index) => '$index');
@@ -55,7 +57,15 @@ class _TargetPreferenceState extends State<TargetPreferenceScreen> {
                       ),
                       TextButton(
                         child: const Text('決定'),
-                        onPressed: () => Navigator.of(context).pop(),
+                        onPressed: () {
+                          pfcGram = caloriesToGrams(
+                              currentUser.targetCalories,
+                              proteinselectNumbar,
+                              fatSelectNumbar,
+                              carbosSelectNumbar);
+                          setState(() {});
+                          Navigator.of(context).pop();
+                        },
                       ),
                     ],
                   ),
@@ -415,15 +425,22 @@ class _TargetPreferenceState extends State<TargetPreferenceScreen> {
                                 const SizedBox(
                                   width: 15,
                                 ),
-                                const Text(
-                                  '81',
-                                  style: TextStyle(fontSize: 15),
-                                ),
+                                //三項演算子
+                                (pfcGram?["proteinGram"] != null)
+                                    ? Text(
+                                        '${pfcGram!["proteinGram"]}',
+                                        style: const TextStyle(fontSize: 15),
+                                      )
+                                    : const Text(
+                                        '81',
+                                        style: TextStyle(fontSize: 15),
+                                      ),
+
                                 const SizedBox(
                                   width: 5,
                                 ),
                                 const Text(
-                                  'kg',
+                                  'g',
                                 ),
                               ],
                             ),
@@ -455,15 +472,20 @@ class _TargetPreferenceState extends State<TargetPreferenceScreen> {
                                 const SizedBox(
                                   width: 15,
                                 ),
-                                const Text(
-                                  '81',
-                                  style: TextStyle(fontSize: 15),
-                                ),
+                                (pfcGram?["fatGram"] != null)
+                                    ? Text(
+                                        '${pfcGram!["fatGram"]}',
+                                        style: const TextStyle(fontSize: 15),
+                                      )
+                                    : const Text(
+                                        '81',
+                                        style: TextStyle(fontSize: 15),
+                                      ),
                                 const SizedBox(
                                   width: 5,
                                 ),
                                 const Text(
-                                  'kg',
+                                  'g',
                                 ),
                               ],
                             ),
@@ -496,15 +518,20 @@ class _TargetPreferenceState extends State<TargetPreferenceScreen> {
                                 const SizedBox(
                                   width: 15,
                                 ),
-                                const Text(
-                                  '81',
-                                  style: TextStyle(fontSize: 15),
-                                ),
+                                (pfcGram?["carboGram"] != null)
+                                    ? Text(
+                                        '${pfcGram!["carboGram"]}',
+                                        style: const TextStyle(fontSize: 15),
+                                      )
+                                    : const Text(
+                                        '81',
+                                        style: TextStyle(fontSize: 15),
+                                      ),
                                 const SizedBox(
                                   width: 5,
                                 ),
                                 const Text(
-                                  'kg',
+                                  'g',
                                 ),
                               ],
                             ),
@@ -561,4 +588,35 @@ class _TargetPreferenceState extends State<TargetPreferenceScreen> {
           },
         ));
   }
+}
+
+//カロリーからグラムに変換
+caloriesToGrams(calorie, p, f, c) {
+  //一グラムあたりのカロリー
+  int protein = 4;
+  int fat = 9;
+  int carbo = 4;
+  Map pfcGrams = {};
+
+  //少数に戻す
+  num proteinRate = int.parse(p) / 100;
+  //プロテインのカロリーを割り出す
+  num proteinCalori = int.parse(calorie) * proteinRate;
+  //カロリーからグラムを割り出す
+  num proteinGram = proteinCalori / protein;
+
+  num fatRate = int.parse(f) / 100;
+  num fatCalori = int.parse(calorie) * fatRate;
+  num fatGram = fatCalori / fat;
+
+  num carboRate = int.parse(c) / 100;
+  num carboCalori = int.parse(calorie) * carboRate;
+  num carboGram = carboCalori / carbo;
+
+//mapに値を追加する and .round()で四捨五入
+  pfcGrams['proteinGram'] = proteinGram.round();
+  pfcGrams["fatGram"] = fatGram.round();
+  pfcGrams["carboGram"] = carboGram.round();
+
+  return pfcGrams;
 }
