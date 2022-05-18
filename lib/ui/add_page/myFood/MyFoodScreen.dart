@@ -1,3 +1,5 @@
+import 'package:fit/model/Food.dart';
+import 'package:fit/services/FirebaseHelper.dart';
 import 'package:fit/ui/home/HomeScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +15,7 @@ class MyFood extends StatefulWidget {
 }
 
 class _MyFoodState extends State<MyFood> {
+  Food food = Food();
   bool isVisible = false;
   @override
   Widget build(BuildContext context) {
@@ -72,19 +75,23 @@ class _MyFoodState extends State<MyFood> {
                               fontWeight: FontWeight.bold, fontSize: 17),
                         ),
                         Row(
-                          children: const [
+                          children: [
                             SizedBox(
                               width: 177,
                               height: 20,
-                              child: TextField(
+                              child: TextFormField(
                                 textInputAction: TextInputAction.next,
                                 textAlign: TextAlign.right,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                         color: Color.fromRGBO(255, 167, 38, 1)),
                                   ),
                                 ),
+                                onChanged: (text) {
+                                  food.name = text;
+                                  setState(() {});
+                                },
                               ),
                             ),
                           ],
@@ -107,23 +114,28 @@ class _MyFoodState extends State<MyFood> {
                             'カロリー',
                           ),
                           Row(
-                            children: const [
+                            children: [
                               SizedBox(
                                 width: 150,
                                 height: 20,
-                                child: TextField(
+                                child: TextFormField(
+                                  keyboardType: TextInputType.number,
                                   textInputAction: TextInputAction.next,
                                   textAlign: TextAlign.right,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                           color:
                                               Color.fromRGBO(255, 167, 38, 1)),
                                     ),
                                   ),
+                                  onChanged: (text) {
+                                    food.calories = text;
+                                    setState(() {});
+                                  },
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'kcal',
                               ),
                             ],
@@ -147,23 +159,28 @@ class _MyFoodState extends State<MyFood> {
                           Container(
                             margin: const EdgeInsets.only(right: 20),
                             child: Row(
-                              children: const [
+                              children: [
                                 SizedBox(
                                   width: 150,
                                   height: 20,
-                                  child: TextField(
+                                  child: TextFormField(
+                                    keyboardType: TextInputType.number,
                                     textInputAction: TextInputAction.next,
                                     textAlign: TextAlign.right,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                             color: Color.fromRGBO(
                                                 255, 167, 38, 1)),
                                       ),
                                     ),
+                                    onChanged: (text) {
+                                      food.protein = text;
+                                      setState(() {});
+                                    },
                                   ),
                                 ),
-                                Text(
+                                const Text(
                                   'g',
                                 ),
                               ],
@@ -188,23 +205,28 @@ class _MyFoodState extends State<MyFood> {
                           Container(
                             margin: const EdgeInsets.only(right: 20),
                             child: Row(
-                              children: const [
+                              children: [
                                 SizedBox(
                                   width: 150,
                                   height: 20,
-                                  child: TextField(
+                                  child: TextFormField(
+                                    keyboardType: TextInputType.number,
                                     textInputAction: TextInputAction.next,
                                     textAlign: TextAlign.right,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                             color: Color.fromRGBO(
                                                 255, 167, 38, 1)),
                                       ),
                                     ),
+                                    onChanged: (text) {
+                                      food.fat = text;
+                                      setState(() {});
+                                    },
                                   ),
                                 ),
-                                Text(
+                                const Text(
                                   'g',
                                 ),
                               ],
@@ -229,23 +251,28 @@ class _MyFoodState extends State<MyFood> {
                           Container(
                             margin: const EdgeInsets.only(right: 20),
                             child: Row(
-                              children: const [
+                              children: [
                                 SizedBox(
                                   width: 150,
                                   height: 20,
-                                  child: TextField(
+                                  child: TextFormField(
+                                    keyboardType: TextInputType.number,
                                     textInputAction: TextInputAction.next,
                                     textAlign: TextAlign.right,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                             color: Color.fromRGBO(
                                                 255, 167, 38, 1)),
                                       ),
                                     ),
+                                    onChanged: (text) {
+                                      food.carbo = text;
+                                      setState(() {});
+                                    },
                                   ),
                                 ),
-                                Text(
+                                const Text(
                                   'g',
                                 ),
                               ],
@@ -267,23 +294,27 @@ class _MyFoodState extends State<MyFood> {
                                 Container(
                                   margin: const EdgeInsets.only(right: 20),
                                   child: Row(
-                                    children: const [
+                                    children: [
                                       SizedBox(
                                         width: 150,
                                         height: 20,
-                                        child: TextField(
+                                        child: TextFormField(
                                           textInputAction: TextInputAction.next,
                                           textAlign: TextAlign.right,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                             focusedBorder: UnderlineInputBorder(
                                               borderSide: BorderSide(
                                                   color: Color.fromRGBO(
                                                       255, 167, 38, 1)),
                                             ),
                                           ),
+                                          onChanged: (text) {
+                                            food.name = text;
+                                            setState(() {});
+                                          },
                                         ),
                                       ),
-                                      Text(
+                                      const Text(
                                         'g',
                                       ),
                                     ],
@@ -299,23 +330,27 @@ class _MyFoodState extends State<MyFood> {
                                   margin:
                                       const EdgeInsets.only(top: 10, right: 20),
                                   child: Row(
-                                    children: const [
+                                    children: [
                                       SizedBox(
                                         width: 150,
                                         height: 20,
-                                        child: TextField(
+                                        child: TextFormField(
                                           textInputAction: TextInputAction.next,
                                           textAlign: TextAlign.right,
-                                          decoration: InputDecoration(
+                                          decoration: const InputDecoration(
                                             focusedBorder: UnderlineInputBorder(
                                               borderSide: BorderSide(
                                                   color: Color.fromRGBO(
                                                       255, 167, 38, 1)),
                                             ),
                                           ),
+                                          onChanged: (text) {
+                                            food.name = text;
+                                            setState(() {});
+                                          },
                                         ),
                                       ),
-                                      Text(
+                                      const Text(
                                         'g',
                                       ),
                                     ],
@@ -374,7 +409,8 @@ class _MyFoodState extends State<MyFood> {
                       color: Color(0xffFAFAFA),
                     ),
                   ),
-                  onPressed: () {
+                  onPressed: () async {
+                    await FireStoreUtils.addFood(food);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -412,23 +448,27 @@ class _MyFoodState extends State<MyFood> {
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
-                            children: const [
+                            children: [
                               SizedBox(
                                 width: 150,
                                 height: 20,
-                                child: TextField(
+                                child: TextFormField(
                                   textInputAction: TextInputAction.next,
                                   textAlign: TextAlign.right,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                           color:
                                               Color.fromRGBO(255, 167, 38, 1)),
                                     ),
                                   ),
+                                  onChanged: (text) {
+                                    food.name = text;
+                                    setState(() {});
+                                  },
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'mg',
                               ),
                             ],
@@ -449,23 +489,27 @@ class _MyFoodState extends State<MyFood> {
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
-                            children: const [
+                            children: [
                               SizedBox(
                                 width: 150,
                                 height: 20,
-                                child: TextField(
+                                child: TextFormField(
                                   textInputAction: TextInputAction.next,
                                   textAlign: TextAlign.right,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                           color:
                                               Color.fromRGBO(255, 167, 38, 1)),
                                     ),
                                   ),
+                                  onChanged: (text) {
+                                    food.name = text;
+                                    setState(() {});
+                                  },
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'μg',
                               ),
                             ],
@@ -486,23 +530,27 @@ class _MyFoodState extends State<MyFood> {
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
-                            children: const [
+                            children: [
                               SizedBox(
                                 width: 150,
                                 height: 20,
-                                child: TextField(
+                                child: TextFormField(
                                   textInputAction: TextInputAction.next,
                                   textAlign: TextAlign.right,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                           color:
                                               Color.fromRGBO(255, 167, 38, 1)),
                                     ),
                                   ),
+                                  onChanged: (text) {
+                                    food.name = text;
+                                    setState(() {});
+                                  },
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'μg',
                               ),
                             ],
@@ -523,23 +571,27 @@ class _MyFoodState extends State<MyFood> {
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
-                            children: const [
+                            children: [
                               SizedBox(
                                 width: 150,
                                 height: 20,
-                                child: TextField(
+                                child: TextFormField(
                                   textInputAction: TextInputAction.next,
                                   textAlign: TextAlign.right,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                           color:
                                               Color.fromRGBO(255, 167, 38, 1)),
                                     ),
                                   ),
+                                  onChanged: (text) {
+                                    food.name = text;
+                                    setState(() {});
+                                  },
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'mg',
                               ),
                             ],
@@ -560,23 +612,27 @@ class _MyFoodState extends State<MyFood> {
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
-                            children: const [
+                            children: [
                               SizedBox(
                                 width: 150,
                                 height: 20,
-                                child: TextField(
+                                child: TextFormField(
                                   textInputAction: TextInputAction.next,
                                   textAlign: TextAlign.right,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                           color:
                                               Color.fromRGBO(255, 167, 38, 1)),
                                     ),
                                   ),
+                                  onChanged: (text) {
+                                    food.name = text;
+                                    setState(() {});
+                                  },
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'mg',
                               ),
                             ],
@@ -597,23 +653,27 @@ class _MyFoodState extends State<MyFood> {
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
-                            children: const [
+                            children: [
                               SizedBox(
                                 width: 150,
                                 height: 20,
-                                child: TextField(
+                                child: TextFormField(
                                   textInputAction: TextInputAction.next,
                                   textAlign: TextAlign.right,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                           color:
                                               Color.fromRGBO(255, 167, 38, 1)),
                                     ),
                                   ),
+                                  onChanged: (text) {
+                                    food.name = text;
+                                    setState(() {});
+                                  },
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'mg',
                               ),
                             ],
@@ -634,23 +694,27 @@ class _MyFoodState extends State<MyFood> {
                         Container(
                           margin: const EdgeInsets.only(right: 20),
                           child: Row(
-                            children: const [
+                            children: [
                               SizedBox(
                                 width: 150,
                                 height: 20,
-                                child: TextField(
+                                child: TextFormField(
                                   textInputAction: TextInputAction.next,
                                   textAlign: TextAlign.right,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                           color:
                                               Color.fromRGBO(255, 167, 38, 1)),
                                     ),
                                   ),
+                                  onChanged: (text) {
+                                    food.name = text;
+                                    setState(() {});
+                                  },
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 'mg',
                               ),
                             ],

@@ -320,7 +320,7 @@ class _TargetPreferenceState extends State<TargetPreferenceScreen> {
                           children: [
                             SizedBox(
                               width: 75,
-                              child: TextField(
+                              child: TextFormField(
                                 textAlign: TextAlign.right,
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.number,
