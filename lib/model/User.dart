@@ -41,7 +41,7 @@ class User with ChangeNotifier {
       'weight': weight,
       'targetWeight': targetWeight,
       "height": height,
-      'id': userID,
+      'userID': userID,
       "targetCalories": targetCalories,
       'targetProtein': targetProtein,
       'targetFat': targetFat,

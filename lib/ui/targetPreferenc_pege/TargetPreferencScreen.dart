@@ -26,7 +26,6 @@ class _TargetPreferenceState extends State<TargetPreferenceScreen> {
   //値を保存用のUserインスタンス
   User currentUser = User();
   //値を出力用
-  User? user;
 
   FireStoreUtils fireStoreUtils = FireStoreUtils();
 
@@ -574,10 +573,14 @@ class _TargetPreferenceState extends State<TargetPreferenceScreen> {
                               auth.FirebaseAuth.instance.currentUser!.uid;
                           //firestoreに入力した値を追加
                           await FireStoreUtils.updateCurrentUser(currentUser);
+                          //firestoreにある値をnullを許可するuserクラスに入れ直してインスタンス化
+                          User? user = await FireStoreUtils.getCurrentUser(
+                              currentUser.userID);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const HomeScreen()));
+                                  builder: (context) =>
+                                      HomeScreen(user: user)));
                         },
                       ),
                     ),

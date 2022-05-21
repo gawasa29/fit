@@ -14,12 +14,9 @@ class FireStoreUtils {
         .set(user.toJson());
   }
 
-  static Future<User?> getCurrentUser(User user) async {
+  static Future<User?> getCurrentUser(uid) async {
     DocumentSnapshot<Map<String, dynamic>> userDocument =
-        await FirebaseFirestore.instance
-            .collection(USERS)
-            .doc(user.userID)
-            .get();
+        await FirebaseFirestore.instance.collection(USERS).doc(uid).get();
     if (userDocument.exists) {
       return User.fromJson(userDocument.data() ?? {});
     } else {

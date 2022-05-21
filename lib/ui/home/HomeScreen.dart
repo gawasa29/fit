@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+//asをつけるのはUser.dartとfirebase_authにもUserクラスがありクラスが競合するから（authは意味はなく自分でつけれる）
 import 'package:fit/ui/calendar/CalendarScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../model/User.dart';
 import '../add_page/AddPageScreen.dart';
 import '../glaf_page/GlafScreen.dart';
 import '../tab_page/DinnerTab.dart';
@@ -18,14 +20,22 @@ import '../tab_page/SnackTab.dart';
 ///////////////////////////////////////////////////////////////////////
 /// Represents HomeScreen class
 class HomeScreen extends StatefulWidget {
-  /// Creates the instance of HomeScreen
-  const HomeScreen({Key? key}) : super(key: key);
+  final User? user;
+  const HomeScreen({Key? key, required this.user}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late User user;
+  @override
+  initState() {
+    user = widget.user!;
+    super.initState();
+  }
+
+  @override
   late Timer _timer;
   double progressValue = 0;
   double secondaryProgressValue = 0;
