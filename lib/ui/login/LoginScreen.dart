@@ -135,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const TargetPreferenceScreen()),
+                        builder: (context) => TargetPreferenceScreen()),
                   );
                 } on FirebaseAuthException catch (e) {
                   if (e.code == 'user-not-found') {

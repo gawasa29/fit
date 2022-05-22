@@ -1,5 +1,4 @@
 import 'package:fit/model/Food.dart';
-import 'package:fit/model/User.dart';
 import 'package:fit/services/FirebaseHelper.dart';
 import 'package:fit/ui/home/HomeScreen.dart';
 import 'package:flutter/material.dart';
@@ -38,9 +37,7 @@ class _MyFoodState extends State<MyFood> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => HomeScreen(
-                              user: User(),
-                            )));
+                        builder: (context) => const HomeScreen()));
               },
               icon: const Icon(
                 Icons.done,
@@ -92,7 +89,6 @@ class _MyFoodState extends State<MyFood> {
                                   ),
                                 ),
                                 onChanged: (text) {
-                                  food.name = text;
                                   setState(() {});
                                 },
                               ),
@@ -312,7 +308,6 @@ class _MyFoodState extends State<MyFood> {
                                             ),
                                           ),
                                           onChanged: (text) {
-                                            food.name = text;
                                             setState(() {});
                                           },
                                         ),
@@ -348,7 +343,6 @@ class _MyFoodState extends State<MyFood> {
                                             ),
                                           ),
                                           onChanged: (text) {
-                                            food.name = text;
                                             setState(() {});
                                           },
                                         ),
@@ -417,7 +411,7 @@ class _MyFoodState extends State<MyFood> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => HomeScreen(user: User())));
+                            builder: (context) => const HomeScreen()));
                   },
                 ),
               ),
@@ -466,7 +460,6 @@ class _MyFoodState extends State<MyFood> {
                                     ),
                                   ),
                                   onChanged: (text) {
-                                    food.name = text;
                                     setState(() {});
                                   },
                                 ),
@@ -507,7 +500,6 @@ class _MyFoodState extends State<MyFood> {
                                     ),
                                   ),
                                   onChanged: (text) {
-                                    food.name = text;
                                     setState(() {});
                                   },
                                 ),
@@ -548,7 +540,6 @@ class _MyFoodState extends State<MyFood> {
                                     ),
                                   ),
                                   onChanged: (text) {
-                                    food.name = text;
                                     setState(() {});
                                   },
                                 ),
@@ -589,7 +580,6 @@ class _MyFoodState extends State<MyFood> {
                                     ),
                                   ),
                                   onChanged: (text) {
-                                    food.name = text;
                                     setState(() {});
                                   },
                                 ),
@@ -630,7 +620,6 @@ class _MyFoodState extends State<MyFood> {
                                     ),
                                   ),
                                   onChanged: (text) {
-                                    food.name = text;
                                     setState(() {});
                                   },
                                 ),
@@ -671,7 +660,6 @@ class _MyFoodState extends State<MyFood> {
                                     ),
                                   ),
                                   onChanged: (text) {
-                                    food.name = text;
                                     setState(() {});
                                   },
                                 ),
@@ -712,7 +700,6 @@ class _MyFoodState extends State<MyFood> {
                                     ),
                                   ),
                                   onChanged: (text) {
-                                    food.name = text;
                                     setState(() {});
                                   },
                                 ),

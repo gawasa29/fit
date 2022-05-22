@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fit/ui/auth/AuthScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 //現時点では目標設定画面
 Future<void> main() async {
@@ -8,7 +9,11 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //ファイアベースコアの初期化
   await Firebase.initializeApp();
-  return runApp(MyApp());
+  return runApp(
+    ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 /// Represents the MyApp class

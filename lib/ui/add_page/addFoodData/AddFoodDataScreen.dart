@@ -34,7 +34,7 @@ class _AddFoodDataState extends State<AddFoodData> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const TargetPreferenceScreen()));
+                        builder: (context) => TargetPreferenceScreen()));
               },
               icon: const Icon(
                 Icons.done,
@@ -273,8 +273,7 @@ class _AddFoodDataState extends State<AddFoodData> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  const TargetPreferenceScreen()));
+                              builder: (context) => TargetPreferenceScreen()));
                     },
                   ),
                 ),

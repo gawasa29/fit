@@ -43,8 +43,7 @@ class _EmailCheckScreenState extends State<EmailCheckScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                const TargetPreferenceScreen()),
+                            builder: (context) => TargetPreferenceScreen()),
                       );
                     });
                   } else {
