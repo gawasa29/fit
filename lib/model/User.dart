@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final userModelProvider = ChangeNotifierProvider((ref) {
+//StateProviderは外部から変更可能な値を公開できるProvider
+final userModelProvider = StateProvider((ref) {
   return User();
 });
 

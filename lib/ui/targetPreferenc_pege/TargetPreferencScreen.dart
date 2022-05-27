@@ -19,8 +19,9 @@ class TargetPreferenceScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //
     final currentUser = ref.watch(userModelProvider);
+    //値更新用のuserクラス
+    final user = ref.watch(userModelProvider.notifier);
     final numbars = List<String>.generate(100, (index) => '$index');
 
     int allNumbar = int.parse(proteinselectNumbar) +
@@ -547,9 +548,6 @@ class TargetPreferenceScreen extends ConsumerWidget {
                       auth.FirebaseAuth.instance.currentUser!.uid;
                   //firestoreに入力した値を追加
                   await FireStoreUtils.updateCurrentUser(currentUser);
-                  //firestoreにある値をnullを許可するuserクラスに入れ直してインスタンス化
-                  User? user =
-                      await FireStoreUtils.getCurrentUser(currentUser.userID);
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -557,6 +555,20 @@ class TargetPreferenceScreen extends ConsumerWidget {
                 },
               ),
             ),
+          ),
+          ElevatedButton(
+            child: const Text('Button'),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.orange,
+              onPrimary: Colors.white,
+            ),
+            onPressed: () async {
+              //これでfirestoreから持ってきた値をUserクラスに代入する
+              user.state = (await FireStoreUtils.getCurrentUser(
+                  auth.FirebaseAuth.instance.currentUser!.uid))!;
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()));
+            },
           ),
         ]),
       ),
