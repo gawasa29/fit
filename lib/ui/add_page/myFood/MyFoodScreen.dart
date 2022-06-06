@@ -89,6 +89,7 @@ class _MyFoodState extends State<MyFood> {
                                   ),
                                 ),
                                 onChanged: (text) {
+                                  food.name = text;
                                   setState(() {});
                                 },
                               ),
