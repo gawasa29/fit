@@ -31,4 +31,16 @@ class FireStoreUtils {
         .doc()
         .set(food.toJson());
   }
+
+  static Future getMarker() async {
+    dynamic foodDocument =
+        await FirebaseFirestore.instance.collection(FOOD).get();
+  }
+
+  static Future getFoodData() async {
+    //firestoreからデータを取得
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection(FOOD).get();
+    return querySnapshot;
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:fit/services/FirebaseHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -30,6 +31,13 @@ class TestScreen extends ConsumerWidget {
               Text(currentUser.targetCarbo),
               Text(currentUser.targetFat),
               Text(currentUser.targetProtein),
+              ElevatedButton(
+                child: const Text('Button'),
+                onPressed: () async {
+                  var gawasa = await FireStoreUtils.getMarker();
+                  print(gawasa);
+                },
+              ),
             ],
           ),
         ));

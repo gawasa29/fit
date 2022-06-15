@@ -1,7 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fit/services/FirebaseHelper.dart';
 import 'package:flutter/material.dart';
-
-import '../addFoodData/AddFoodDataScreen.dart';
-import '../SerchFoodDataScreen.dart';
 
 class MorningAdd extends StatelessWidget {
   const MorningAdd({Key? key}) : super(key: key);
@@ -9,113 +8,46 @@ class MorningAdd extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: [
-          Flexible(
-            child: ListView(
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const AddFoodData()));
+      child: FutureBuilder<dynamic>(
+          future: FireStoreUtils.getFoodData(), // 👈 非同期なデータ
+          builder: (BuildContext context, snapshot) {
+            if (snapshot.hasData) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                //ローディングなどの待ち時間に表示することが多いグルグルです。
+                return const CircularProgressIndicator();
+              } else {
+                List nameList =
+                    snapshot.data!.docs.map((DocumentSnapshot document) {
+                  Map<String, dynamic> data =
+                      document.data() as Map<String, dynamic>;
+                  return data['name']; // 👈 field from your document
+                }).toList();
+                return ListView.builder(
+                  itemCount: nameList.length, // 👈 リストの数を指定
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(
+                      title: Text(
+                        nameList[index], // 👈indexはfor in 文みたいにlistの中身を繰り返し取得
+                        style: const TextStyle(
+                            color: Colors.black, fontSize: 18.0),
+                      ),
+                      onTap: () {
+                        print("onTap called.");
+                      }, // タップ
+                      onLongPress: () {
+                        print("onLongTap called.");
+                      }, // 長押し
+                    );
                   },
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        child: ListTile(
-                          title: Text(
-                            '白米',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle:
-                              Text('100g', style: TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                      ),
-                      IconButton(
-                        iconSize: 30,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SerchFoodData()));
-                        },
-                        icon: const Icon(
-                          Icons.control_point_outlined,
-                          color: Colors.black54,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        child: ListTile(
-                          title: Text(
-                            '白米',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle:
-                              Text('100g', style: TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                      ),
-                      IconButton(
-                        iconSize: 30,
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.control_point_outlined,
-                          color: Colors.black54,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const AddFoodData()));
-                  },
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        child: ListTile(
-                          title: Text(
-                            '白米',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          ),
-                          subtitle:
-                              Text('100g', style: TextStyle(fontSize: 13)),
-                          trailing: Text('336kcal'),
-                        ),
-                      ),
-                      IconButton(
-                        iconSize: 30,
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.control_point_outlined,
-                          color: Colors.black54,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+                );
+              }
+              // 通信が失敗した場合
+            } else if (snapshot.hasError) {
+              return Text(snapshot.error.toString());
+            }
+            //ローディングなどの待ち時間に表示することが多いグルグルです。
+            return const CircularProgressIndicator();
+          }),
     );
   }
 }
